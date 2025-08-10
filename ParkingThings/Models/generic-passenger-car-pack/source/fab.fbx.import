@@ -1,0 +1,471 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dkwsw0bwiswuc"
+path="res://.godot/imported/fab.fbx-ae315192b788dc346838dc2d604504bf.scn"
+
+[deps]
+
+source_file="res://Models/generic-passenger-car-pack/source/fab.fbx"
+dest_files=["res://.godot/imported/fab.fbx-ae315192b788dc346838dc2d604504bf.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Body": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/generic-passenger-car-pack/source/Body.tres"
+},
+"Glass": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/generic-passenger-car-pack/source/Glass.tres"
+},
+"Optics": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/generic-passenger-car-pack/source/Optics.tres"
+},
+"Wheek": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/generic-passenger-car-pack/source/Wheek.tres"
+},
+"Wheel": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/generic-passenger-car-pack/source/Wheel.tres"
+}
+},
+"meshes": {
+"Compact Body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Compact Body.res"
+},
+"Coupe Body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Coupe Body.res"
+},
+"Cylinder001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Cylinder001.res"
+},
+"Hatchback Body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Hatchback Body.res"
+},
+"Offroad Body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Offroad Body.res"
+},
+"Pickup Body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Pickup Body.res"
+},
+"SUV Body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/SUV Body.res"
+},
+"Sedan Body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Sedan Body.res"
+},
+"Sport body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Sport body.res"
+},
+"Wagon Body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wagon Body.res"
+},
+"Wheel_A": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_A.res"
+},
+"Wheel_A001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_A001.res"
+},
+"Wheel_A0012": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_A0012.res"
+},
+"Wheel_A002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_A002.res"
+},
+"Wheel_A0022": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_A0022.res"
+},
+"Wheel_A003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_A003.res"
+},
+"Wheel_A0032": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_A0032.res"
+},
+"Wheel_A2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_A2.res"
+},
+"Wheel_B": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_B.res"
+},
+"Wheel_B001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_B001.res"
+},
+"Wheel_B002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_B002.res"
+},
+"Wheel_B003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_B003.res"
+},
+"Wheel_C": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_C.res"
+},
+"Wheel_C001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_C001.res"
+},
+"Wheel_C002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_C002.res"
+},
+"Wheel_C003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_C003.res"
+},
+"Wheel_D": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_D.res"
+},
+"Wheel_D001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_D001.res"
+},
+"Wheel_D002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_D002.res"
+},
+"Wheel_D003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_D003.res"
+},
+"Wheel_E": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_E.res"
+},
+"Wheel_E001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_E001.res"
+},
+"Wheel_E0012": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_E0012.res"
+},
+"Wheel_E002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_E002.res"
+},
+"Wheel_E0022": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_E0022.res"
+},
+"Wheel_E003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_E003.res"
+},
+"Wheel_E0032": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_E0032.res"
+},
+"Wheel_E2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_E2.res"
+},
+"Wheel_F": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_F.res"
+},
+"Wheel_F001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_F001.res"
+},
+"Wheel_F002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_F002.res"
+},
+"Wheel_F003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_F003.res"
+},
+"Wheel_G": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_G.res"
+},
+"Wheel_G001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_G001.res"
+},
+"Wheel_G0012": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_G0012.res"
+},
+"Wheel_G002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_G002.res"
+},
+"Wheel_H": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_H.res"
+},
+"Wheel_H001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_H001.res"
+},
+"Wheel_H002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_H002.res"
+},
+"Wheel_H003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/Wheel_H003.res"
+},
+"minivan body": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/generic-passenger-car-pack/source/minivan body.res"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

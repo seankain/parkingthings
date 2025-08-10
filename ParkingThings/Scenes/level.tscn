@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0kxoayxkvhfa"]
+
+[ext_resource type="PackedScene" uid="uid://war5oa36xae" path="res://Models/auzrea_parking_final/scene.gltf" id="1_tumq0"]
+[ext_resource type="PackedScene" uid="uid://bc83860mn7wky" path="res://Scenes/player.tscn" id="2_k5f4k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5f4k"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_6phgx"]
+sky_material = SubResource("ProceduralSkyMaterial_k5f4k")
+
+[sub_resource type="Environment" id="Environment_81xng"]
+background_mode = 2
+sky = SubResource("Sky_6phgx")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tumq0"]
+size = Vector3(161.962, 1, 191.524)
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_81xng")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_tumq0")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -80.5453, 0, 83.3799)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72411, 0, 7.34507)
+size = Vector3(1, 1, 9)
+
+[node name="VehicleBody3D" parent="." instance=ExtResource("2_k5f4k")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 31.1631, 0.758841, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9238, -0.255701, -12.6025)
+shape = SubResource("BoxShape3D_tumq0")
