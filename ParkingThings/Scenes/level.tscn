@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0kxoayxkvhfa"]
 
 [ext_resource type="PackedScene" uid="uid://war5oa36xae" path="res://Models/auzrea_parking_final/scene.gltf" id="1_tumq0"]
-[ext_resource type="PackedScene" uid="uid://bc83860mn7wky" path="res://Scenes/player.tscn" id="2_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://cwtqheaxtihay" path="res://Scenes/simple_player.tscn" id="2_k5f4k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5f4k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -40,4 +40,10 @@ size = Vector3(1, 1, 9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9238, -0.255701, -12.6025)
 shape = SubResource("BoxShape3D_tumq0")
 
-[node name="VehicleBody3D" parent="." instance=ExtResource("2_k5f4k")]
+[node name="SimplePlayer" parent="." instance=ExtResource("2_k5f4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5003, 0.679987, 2.92075)
+mass = 100.0
+ENGINE_POWER = 1000.0
+
+[node name="RespawnPoint" type="Node3D" parent="." groups=["Respawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9989, 1.59742, 2.79013)
