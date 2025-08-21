@@ -1,0 +1,302 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bugq18xqxagud"
+path="res://.godot/imported/scene.gltf-d456a0853cc9335a112ddd6293d692d8.scn"
+
+[deps]
+
+source_file="res://Models/NissanSentra/scene.gltf"
+dest_files=["res://.godot/imported/scene.gltf-d456a0853cc9335a112ddd6293d692d8.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"NISSANsentra": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/NISSANsentra.tres"
+},
+"NISSANsentraint": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/NISSANsentraint.tres"
+},
+"NISSANsentraluz": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/NISSANsentraluz.tres"
+},
+"NISSANsentraplast": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/NISSANsentraplast.tres"
+},
+"NISSANsentrawheel": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/NISSANsentrawheel.tres"
+},
+"bajo": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/bajo.tres"
+},
+"cromo": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/cromo.tres"
+},
+"disk": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/disk.tres"
+},
+"glass": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/glass.tres"
+},
+"glass_surr": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/glass_surr.tres"
+},
+"llanta": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/NissanSentra/llanta.tres"
+}
+},
+"meshes": {
+"Sketchfab_Scene_Mesh10_glass_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh10_glass_0.res"
+},
+"Sketchfab_Scene_Mesh11_bajo_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh11_bajo_0.res"
+},
+"Sketchfab_Scene_Mesh12_bajo_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh12_bajo_0.res"
+},
+"Sketchfab_Scene_Mesh13_llanta_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh13_llanta_0.res"
+},
+"Sketchfab_Scene_Mesh14_NISSANsentrawheel_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh14_NISSANsentrawheel_0.res"
+},
+"Sketchfab_Scene_Mesh15_bajo_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh15_bajo_0.res"
+},
+"Sketchfab_Scene_Mesh16_llanta_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh16_llanta_0.res"
+},
+"Sketchfab_Scene_Mesh17_NISSANsentrawheel_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh17_NISSANsentrawheel_0.res"
+},
+"Sketchfab_Scene_Mesh18_bajo_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh18_bajo_0.res"
+},
+"Sketchfab_Scene_Mesh19_llanta_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh19_llanta_0.res"
+},
+"Sketchfab_Scene_Mesh1_NISSANsentra_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh1_NISSANsentra_0.res"
+},
+"Sketchfab_Scene_Mesh20_NISSANsentrawheel_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh20_NISSANsentrawheel_0.res"
+},
+"Sketchfab_Scene_Mesh21_bajo_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh21_bajo_0.res"
+},
+"Sketchfab_Scene_Mesh22_llanta_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh22_llanta_0.res"
+},
+"Sketchfab_Scene_Mesh23_NISSANsentrawheel_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh23_NISSANsentrawheel_0.res"
+},
+"Sketchfab_Scene_Mesh24_disk_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh24_disk_0.res"
+},
+"Sketchfab_Scene_Mesh25_disk_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh25_disk_0.res"
+},
+"Sketchfab_Scene_Mesh26_disk_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh26_disk_0.res"
+},
+"Sketchfab_Scene_Mesh27_disk_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh27_disk_0.res"
+},
+"Sketchfab_Scene_Mesh2_NISSANsentraint_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh2_NISSANsentraint_0.res"
+},
+"Sketchfab_Scene_Mesh3_NISSANsentraplast_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh3_NISSANsentraplast_0.res"
+},
+"Sketchfab_Scene_Mesh4_NISSANsentraplast_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh4_NISSANsentraplast_0.res"
+},
+"Sketchfab_Scene_Mesh5_cromo_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh5_cromo_0.res"
+},
+"Sketchfab_Scene_Mesh6_NISSANsentraluz_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh6_NISSANsentraluz_0.res"
+},
+"Sketchfab_Scene_Mesh7_glass_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh7_glass_0.res"
+},
+"Sketchfab_Scene_Mesh8_glass_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh8_glass_0.res"
+},
+"Sketchfab_Scene_Mesh9_glass_surr_0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Models/NissanSentra/Sketchfab_Scene_Mesh9_glass_surr_0.res"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

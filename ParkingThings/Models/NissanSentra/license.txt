@@ -1,0 +1,11 @@
+Model Information:
+* title:	2007 Nissan Sentra SE-R Spec V
+* source:	https://sketchfab.com/3d-models/2007-nissan-sentra-se-r-spec-v-f9d64b5c5dda4870b7c83144956a993e
+* author:	Ddiaz Design (https://sketchfab.com/ddiaz-design)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "2007 Nissan Sentra SE-R Spec V" (https://sketchfab.com/3d-models/2007-nissan-sentra-se-r-spec-v-f9d64b5c5dda4870b7c83144956a993e) by Ddiaz Design (https://sketchfab.com/ddiaz-design) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

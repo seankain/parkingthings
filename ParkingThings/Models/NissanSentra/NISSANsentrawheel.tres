@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://eqxpaycey0lq"]
+
+[ext_resource type="Texture2D" uid="uid://ciql7bc447oes" path="res://Models/NissanSentra/textures/NISSANsentrawheel_baseColor.jpeg" id="1_2ifoj"]
+[ext_resource type="Texture2D" uid="uid://cj57jmftkjlm2" path="res://Models/NissanSentra/textures/NISSANsentrawheel_metallicRoughness.png" id="2_qj4jx"]
+
+[resource]
+resource_name = "NISSANsentrawheel"
+cull_mode = 2
+albedo_texture = ExtResource("1_2ifoj")
+metallic = 0.67505
+metallic_texture = ExtResource("2_qj4jx")
+metallic_texture_channel = 2
+roughness = 0.272763
+roughness_texture = ExtResource("2_qj4jx")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_qj4jx")

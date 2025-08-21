@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b0tpl6q2i4m5h"]
+
+[ext_resource type="Texture2D" uid="uid://cdf5de8w7enaa" path="res://Models/NissanSentra/textures/bajo_baseColor.jpeg" id="1_wrnux"]
+
+[resource]
+resource_name = "bajo"
+cull_mode = 2
+albedo_texture = ExtResource("1_wrnux")
+metallic = 0.626288
+roughness = 0.510478

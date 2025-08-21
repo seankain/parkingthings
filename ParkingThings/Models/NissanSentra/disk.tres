@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ddl4n7n70gl6c"]
+
+[ext_resource type="Texture2D" uid="uid://bh0apxru6pu3j" path="res://Models/NissanSentra/textures/disk_baseColor.jpeg" id="1_t5bdd"]
+[ext_resource type="Texture2D" uid="uid://b0njotql3sne" path="res://Models/NissanSentra/textures/disk_metallicRoughness.png" id="2_8m0ud"]
+
+[resource]
+resource_name = "disk"
+cull_mode = 2
+albedo_texture = ExtResource("1_t5bdd")
+metallic = 0.583621
+metallic_texture = ExtResource("2_8m0ud")
+metallic_texture_channel = 2
+roughness = 0.376382
+roughness_texture = ExtResource("2_8m0ud")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_8m0ud")

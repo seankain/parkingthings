@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dc1tjfgqgvax7"]
+
+[ext_resource type="Texture2D" uid="uid://dic3xmq1hyrsp" path="res://Models/NissanSentra/textures/NISSANsentraint_baseColor.jpeg" id="1_lauky"]
+[ext_resource type="Texture2D" uid="uid://c3t2pyx6qbw80" path="res://Models/NissanSentra/textures/NISSANsentraint_metallicRoughness.png" id="2_400qg"]
+
+[resource]
+resource_name = "NISSANsentraint"
+cull_mode = 2
+albedo_texture = ExtResource("1_lauky")
+metallic = 0.784764
+metallic_texture = ExtResource("2_400qg")
+metallic_texture_channel = 2
+roughness = 0.608002
+roughness_texture = ExtResource("2_400qg")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_400qg")

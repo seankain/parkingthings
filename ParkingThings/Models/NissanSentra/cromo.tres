@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bkj24ips61tv5"]
+
+[resource]
+resource_name = "cromo"
+cull_mode = 2
+albedo_color = Color(0.725664, 0.725664, 0.725664, 1)
+metallic = 0.796955
+roughness = 0.065524

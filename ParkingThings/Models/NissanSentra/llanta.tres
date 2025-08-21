@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://d3fohq086628p"]
+
+[ext_resource type="Texture2D" uid="uid://b05s607qu0y4v" path="res://Models/NissanSentra/textures/llanta_baseColor.jpeg" id="1_0l1eg"]
+[ext_resource type="Texture2D" uid="uid://hq2yk3wioicr" path="res://Models/NissanSentra/textures/llanta_metallicRoughness.png" id="2_mb5yk"]
+
+[resource]
+resource_name = "llanta"
+cull_mode = 2
+albedo_texture = ExtResource("1_0l1eg")
+metallic = 0.583621
+metallic_texture = ExtResource("2_mb5yk")
+metallic_texture_channel = 2
+roughness = 0.321525
+roughness_texture = ExtResource("2_mb5yk")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_mb5yk")

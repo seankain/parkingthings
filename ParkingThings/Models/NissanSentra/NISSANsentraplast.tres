@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://d2f1y3s86nqoa"]
+
+[ext_resource type="Texture2D" uid="uid://bo3s5e2wvqfy2" path="res://Models/NissanSentra/textures/NISSANsentraplast_baseColor.jpeg" id="1_aj41o"]
+[ext_resource type="Texture2D" uid="uid://ebdc0lnn4os6" path="res://Models/NissanSentra/textures/NISSANsentraplast_metallicRoughness.png" id="2_hsq6j"]
+
+[resource]
+resource_name = "NISSANsentraplast"
+cull_mode = 2
+albedo_texture = ExtResource("1_aj41o")
+metallic = 1.0
+metallic_texture = ExtResource("2_hsq6j")
+metallic_texture_channel = 2
+roughness = 0.522668
+roughness_texture = ExtResource("2_hsq6j")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_hsq6j")

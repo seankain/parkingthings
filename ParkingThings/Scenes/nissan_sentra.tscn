@@ -1,0 +1,265 @@
+[gd_scene load_steps=29 format=3 uid="uid://cigpdmrunsnqy"]
+
+[ext_resource type="ArrayMesh" uid="uid://credu33u2y57w" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh1_NISSANsentra_0.res" id="1_yv6o0"]
+[ext_resource type="ArrayMesh" uid="uid://cfcua0yojdj7m" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh2_NISSANsentraint_0.res" id="2_4p6hp"]
+[ext_resource type="ArrayMesh" uid="uid://7nvbop67ibbx" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh3_NISSANsentraplast_0.res" id="3_csdx6"]
+[ext_resource type="ArrayMesh" uid="uid://b04yiu61nn71b" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh4_NISSANsentraplast_0.res" id="4_vo3v3"]
+[ext_resource type="ArrayMesh" uid="uid://cadrxgh5qr56u" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh5_cromo_0.res" id="5_mqawt"]
+[ext_resource type="ArrayMesh" uid="uid://vxyn4ouipwpa" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh6_NISSANsentraluz_0.res" id="6_8dc6f"]
+[ext_resource type="ArrayMesh" uid="uid://jfbwms3ej1kb" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh7_glass_0.res" id="7_wfdgr"]
+[ext_resource type="ArrayMesh" uid="uid://cllsntfln5fh3" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh8_glass_0.res" id="8_rf365"]
+[ext_resource type="ArrayMesh" uid="uid://ccyk11fe1l6x0" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh9_glass_surr_0.res" id="9_ktfxw"]
+[ext_resource type="ArrayMesh" uid="uid://bepk4spb14te1" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh10_glass_0.res" id="10_yxg3e"]
+[ext_resource type="ArrayMesh" uid="uid://e8kvd0av3i3i" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh11_bajo_0.res" id="11_i0s23"]
+[ext_resource type="ArrayMesh" uid="uid://c1u2bcg5yfwgl" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh12_bajo_0.res" id="12_ti0p3"]
+[ext_resource type="ArrayMesh" uid="uid://dcpg00jx4qi75" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh13_llanta_0.res" id="13_1gkko"]
+[ext_resource type="ArrayMesh" uid="uid://dxogoutms50r7" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh14_NISSANsentrawheel_0.res" id="14_l85e0"]
+[ext_resource type="ArrayMesh" uid="uid://c4sh5kwhrap1t" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh15_bajo_0.res" id="15_8gixd"]
+[ext_resource type="ArrayMesh" uid="uid://or7gvavuyytg" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh16_llanta_0.res" id="16_rdvhj"]
+[ext_resource type="ArrayMesh" uid="uid://cy6n34m12h1gf" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh17_NISSANsentrawheel_0.res" id="17_adrcx"]
+[ext_resource type="ArrayMesh" uid="uid://cnk5mxcvswcom" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh18_bajo_0.res" id="18_76o5i"]
+[ext_resource type="ArrayMesh" uid="uid://cbgvwjmvk1fp0" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh19_llanta_0.res" id="19_3owsx"]
+[ext_resource type="ArrayMesh" uid="uid://xcxdksrkdw44" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh20_NISSANsentrawheel_0.res" id="20_axqra"]
+[ext_resource type="ArrayMesh" uid="uid://di5mnn25dfobj" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh21_bajo_0.res" id="21_28675"]
+[ext_resource type="ArrayMesh" uid="uid://n7r5u6jgb3no" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh22_llanta_0.res" id="22_rdp56"]
+[ext_resource type="ArrayMesh" uid="uid://c7gxpbmrylixs" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh23_NISSANsentrawheel_0.res" id="23_yb1u7"]
+[ext_resource type="ArrayMesh" uid="uid://ciul41vsqigcs" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh24_disk_0.res" id="24_h2lqn"]
+[ext_resource type="ArrayMesh" uid="uid://cgkes648wgx8u" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh25_disk_0.res" id="25_3sd0w"]
+[ext_resource type="ArrayMesh" uid="uid://d1cgr8rhep46j" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh26_disk_0.res" id="26_1ommd"]
+[ext_resource type="ArrayMesh" uid="uid://ddtrdqt6pl64b" path="res://Models/NissanSentra/Sketchfab_Scene_Mesh27_disk_0.res" id="27_apied"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmnap"]
+albedo_color = Color(0.7, 0.6055, 0.49, 1)
+metallic = 0.8
+metallic_specular = 0.63
+
+[node name="VehicleBody3D" type="VehicleBody3D"]
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Group1" type="Node3D" parent="Model"]
+
+[node name="Mesh1" type="Node3D" parent="Model/Group1"]
+
+[node name="Mesh1_NISSANsentra_0" type="MeshInstance3D" parent="Model/Group1/Mesh1"]
+mesh = ExtResource("1_yv6o0")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_mmnap")
+
+[node name="Group2" type="Node3D" parent="Model"]
+
+[node name="Mesh2" type="Node3D" parent="Model/Group2"]
+
+[node name="Mesh2_NISSANsentraint_0" type="MeshInstance3D" parent="Model/Group2/Mesh2"]
+mesh = ExtResource("2_4p6hp")
+skeleton = NodePath("")
+
+[node name="Group3" type="Node3D" parent="Model"]
+
+[node name="Group4" type="Node3D" parent="Model/Group3"]
+
+[node name="Mesh3" type="Node3D" parent="Model/Group3/Group4"]
+
+[node name="Mesh3_NISSANsentraplast_0" type="MeshInstance3D" parent="Model/Group3/Group4/Mesh3"]
+mesh = ExtResource("3_csdx6")
+skeleton = NodePath("")
+
+[node name="Mesh4" type="Node3D" parent="Model/Group3"]
+
+[node name="Mesh4_NISSANsentraplast_0" type="MeshInstance3D" parent="Model/Group3/Mesh4"]
+mesh = ExtResource("4_vo3v3")
+skeleton = NodePath("")
+
+[node name="Group5" type="Node3D" parent="Model"]
+
+[node name="Mesh5" type="Node3D" parent="Model/Group5"]
+
+[node name="Mesh5_cromo_0" type="MeshInstance3D" parent="Model/Group5/Mesh5"]
+mesh = ExtResource("5_mqawt")
+skeleton = NodePath("")
+
+[node name="Group6" type="Node3D" parent="Model"]
+
+[node name="Mesh6" type="Node3D" parent="Model/Group6"]
+
+[node name="Mesh6_NISSANsentraluz_0" type="MeshInstance3D" parent="Model/Group6/Mesh6"]
+mesh = ExtResource("6_8dc6f")
+skeleton = NodePath("")
+
+[node name="Group7" type="Node3D" parent="Model"]
+
+[node name="Group8" type="Node3D" parent="Model/Group7"]
+
+[node name="Mesh7" type="Node3D" parent="Model/Group7/Group8"]
+
+[node name="Mesh7_glass_0" type="MeshInstance3D" parent="Model/Group7/Group8/Mesh7"]
+mesh = ExtResource("7_wfdgr")
+skeleton = NodePath("")
+
+[node name="Group9" type="Node3D" parent="Model/Group7"]
+
+[node name="Mesh8" type="Node3D" parent="Model/Group7/Group9"]
+
+[node name="Mesh8_glass_0" type="MeshInstance3D" parent="Model/Group7/Group9/Mesh8"]
+mesh = ExtResource("8_rf365")
+skeleton = NodePath("")
+
+[node name="Group10" type="Node3D" parent="Model/Group7"]
+
+[node name="Mesh9" type="Node3D" parent="Model/Group7/Group10"]
+
+[node name="Mesh9_glass_surr_0" type="MeshInstance3D" parent="Model/Group7/Group10/Mesh9"]
+mesh = ExtResource("9_ktfxw")
+skeleton = NodePath("")
+
+[node name="Group11" type="Node3D" parent="Model/Group7"]
+
+[node name="Mesh10" type="Node3D" parent="Model/Group7/Group11"]
+
+[node name="Mesh10_glass_0" type="MeshInstance3D" parent="Model/Group7/Group11/Mesh10"]
+mesh = ExtResource("10_yxg3e")
+skeleton = NodePath("")
+
+[node name="Group12" type="Node3D" parent="Model"]
+
+[node name="Mesh11" type="Node3D" parent="Model/Group12"]
+
+[node name="Mesh11_bajo_0" type="MeshInstance3D" parent="Model/Group12/Mesh11"]
+mesh = ExtResource("11_i0s23")
+skeleton = NodePath("")
+
+[node name="Group13" type="Node3D" parent="Model"]
+
+[node name="Group14" type="Node3D" parent="Model/Group13"]
+
+[node name="Mesh12" type="Node3D" parent="Model/Group13/Group14"]
+
+[node name="Mesh12_bajo_0" type="MeshInstance3D" parent="Model/Group13/Group14/Mesh12"]
+mesh = ExtResource("12_ti0p3")
+skeleton = NodePath("")
+
+[node name="Group15" type="Node3D" parent="Model/Group13"]
+
+[node name="Mesh13" type="Node3D" parent="Model/Group13/Group15"]
+
+[node name="Mesh13_llanta_0" type="MeshInstance3D" parent="Model/Group13/Group15/Mesh13"]
+mesh = ExtResource("13_1gkko")
+skeleton = NodePath("")
+
+[node name="Group16" type="Node3D" parent="Model/Group13"]
+
+[node name="Mesh14" type="Node3D" parent="Model/Group13/Group16"]
+
+[node name="Mesh14_NISSANsentrawheel_0" type="MeshInstance3D" parent="Model/Group13/Group16/Mesh14"]
+mesh = ExtResource("14_l85e0")
+skeleton = NodePath("")
+
+[node name="Group17" type="Node3D" parent="Model"]
+
+[node name="Group18" type="Node3D" parent="Model/Group17"]
+
+[node name="Mesh15" type="Node3D" parent="Model/Group17/Group18"]
+
+[node name="Mesh15_bajo_0" type="MeshInstance3D" parent="Model/Group17/Group18/Mesh15"]
+mesh = ExtResource("15_8gixd")
+skeleton = NodePath("")
+
+[node name="Group19" type="Node3D" parent="Model/Group17"]
+
+[node name="Mesh16" type="Node3D" parent="Model/Group17/Group19"]
+
+[node name="Mesh16_llanta_0" type="MeshInstance3D" parent="Model/Group17/Group19/Mesh16"]
+mesh = ExtResource("16_rdvhj")
+skeleton = NodePath("")
+
+[node name="Group20" type="Node3D" parent="Model/Group17"]
+
+[node name="Mesh17" type="Node3D" parent="Model/Group17/Group20"]
+
+[node name="Mesh17_NISSANsentrawheel_0" type="MeshInstance3D" parent="Model/Group17/Group20/Mesh17"]
+mesh = ExtResource("17_adrcx")
+skeleton = NodePath("")
+
+[node name="Group21" type="Node3D" parent="Model"]
+
+[node name="Group22" type="Node3D" parent="Model/Group21"]
+
+[node name="Mesh18" type="Node3D" parent="Model/Group21/Group22"]
+
+[node name="Mesh18_bajo_0" type="MeshInstance3D" parent="Model/Group21/Group22/Mesh18"]
+mesh = ExtResource("18_76o5i")
+skeleton = NodePath("")
+
+[node name="Group23" type="Node3D" parent="Model/Group21"]
+
+[node name="Mesh19" type="Node3D" parent="Model/Group21/Group23"]
+
+[node name="Mesh19_llanta_0" type="MeshInstance3D" parent="Model/Group21/Group23/Mesh19"]
+mesh = ExtResource("19_3owsx")
+skeleton = NodePath("")
+
+[node name="Group24" type="Node3D" parent="Model/Group21"]
+
+[node name="Mesh20" type="Node3D" parent="Model/Group21/Group24"]
+
+[node name="Mesh20_NISSANsentrawheel_0" type="MeshInstance3D" parent="Model/Group21/Group24/Mesh20"]
+mesh = ExtResource("20_axqra")
+skeleton = NodePath("")
+
+[node name="Group25" type="Node3D" parent="Model"]
+
+[node name="Group26" type="Node3D" parent="Model/Group25"]
+
+[node name="Mesh21" type="Node3D" parent="Model/Group25/Group26"]
+
+[node name="Mesh21_bajo_0" type="MeshInstance3D" parent="Model/Group25/Group26/Mesh21"]
+mesh = ExtResource("21_28675")
+skeleton = NodePath("")
+
+[node name="Group27" type="Node3D" parent="Model/Group25"]
+
+[node name="Mesh22" type="Node3D" parent="Model/Group25/Group27"]
+
+[node name="Mesh22_llanta_0" type="MeshInstance3D" parent="Model/Group25/Group27/Mesh22"]
+mesh = ExtResource("22_rdp56")
+skeleton = NodePath("")
+
+[node name="Group28" type="Node3D" parent="Model/Group25"]
+
+[node name="Mesh23" type="Node3D" parent="Model/Group25/Group28"]
+
+[node name="Mesh23_NISSANsentrawheel_0" type="MeshInstance3D" parent="Model/Group25/Group28/Mesh23"]
+mesh = ExtResource("23_yb1u7")
+skeleton = NodePath("")
+
+[node name="Group29" type="Node3D" parent="Model"]
+
+[node name="Mesh24" type="Node3D" parent="Model/Group29"]
+
+[node name="Mesh24_disk_0" type="MeshInstance3D" parent="Model/Group29/Mesh24"]
+mesh = ExtResource("24_h2lqn")
+skeleton = NodePath("")
+
+[node name="Group30" type="Node3D" parent="Model"]
+
+[node name="Mesh25" type="Node3D" parent="Model/Group30"]
+
+[node name="Mesh25_disk_0" type="MeshInstance3D" parent="Model/Group30/Mesh25"]
+mesh = ExtResource("25_3sd0w")
+skeleton = NodePath("")
+
+[node name="Group31" type="Node3D" parent="Model"]
+
+[node name="Mesh26" type="Node3D" parent="Model/Group31"]
+
+[node name="Mesh26_disk_0" type="MeshInstance3D" parent="Model/Group31/Mesh26"]
+mesh = ExtResource("26_1ommd")
+skeleton = NodePath("")
+
+[node name="Group32" type="Node3D" parent="Model"]
+
+[node name="Mesh27" type="Node3D" parent="Model/Group32"]
+
+[node name="Mesh27_disk_0" type="MeshInstance3D" parent="Model/Group32/Mesh27"]
+mesh = ExtResource("27_apied")
+skeleton = NodePath("")
