@@ -1,13 +1,18 @@
 using Godot;
 using System;
-
+using System.Collections.Generic;
+// TODO move all of this up to parking space which already has a reference to the area3d and can 
+// listen to these events this is a needless subcomponent
 public enum ParkingSpaceTriggerType
 {
     Entry,
     Exit
 }
 
-public class ParkingSpaceTransitEventArgs { }
+public class ParkingSpaceTransitEventArgs
+{
+    public Node3D EnteringNode;
+}
 
 public delegate void ParkingSpaceEnteredEventHandler(object sender, ParkingSpaceTransitEventArgs e);
 public delegate void ParkingSpaceExitedEventHandler(object sender, ParkingSpaceTransitEventArgs e);
@@ -36,15 +41,21 @@ public partial class ParkingSpaceArea : Area3D
     {
         this.BodyEntered += (o) =>
         {
-            GD.Print("Vehicle entered parking space");
+            GD.Print($"{o.Name} entered parking space");
+            if (o.IsInGroup("Player"))
+            {
 
-            OnParkingSpaceEntered(new ParkingSpaceTransitEventArgs());
+                OnParkingSpaceEntered(new ParkingSpaceTransitEventArgs { EnteringNode = o });
+            }
         };
 
         this.BodyExited += (o) =>
         {
-            GD.Print("Vehicle exited parking space");
-            OnParkingSpaceExited(new ParkingSpaceTransitEventArgs());
+            GD.Print($"{o.Name} exited parking space");
+            if (o.IsInGroup("Player"))
+            {
+                OnParkingSpaceExited(new ParkingSpaceTransitEventArgs { EnteringNode = o });
+            }
         };
     }
 }

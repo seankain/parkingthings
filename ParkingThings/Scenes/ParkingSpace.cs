@@ -12,6 +12,10 @@ public partial class ParkingSpace : Node3D
 
     private Game game;
 
+    private Node3D nodeToBeScored;
+
+    private bool isScoring = false;
+
     [Export]
     public Node3D FrontRightPost;
     [Export]
@@ -21,6 +25,7 @@ public partial class ParkingSpace : Node3D
     [Export]
     public Node3D RearLeftPost;
 
+
     public override void _Ready()
     {
         area.ParkingSpaceEntered += OnParkingSpaceEntered;
@@ -29,15 +34,39 @@ public partial class ParkingSpace : Node3D
         base._Ready();
     }
 
+    public override void _Process(double delta)
+    {
+        if (isScoring)
+        {
+            game.Score = CalculateCurrentParkingScore();
+        }
+    }
+
+    private uint CalculateCurrentParkingScore()
+    {
+        var scoreNodeForward = -nodeToBeScored.Transform.Basis.Z;
+        var angle = scoreNodeForward.AngleTo(this.Transform.Basis.Z);
+        var fr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontRightPost.GlobalPosition);
+        var fl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontLeftPost.GlobalPosition);
+        var rr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearRightPost.GlobalPosition);
+        var rl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearLeftPost.GlobalPosition);
+        GD.Print($"RF:{fr_dist} LF:{fl_dist} RR:{rr_dist} RL:{rl_dist} angle:{angle}");
+        // todo actually make a score
+        return (uint)angle;
+    }
+
+
     private void OnParkingSpaceExited(object sender, ParkingSpaceTransitEventArgs e)
     {
-        throw new NotImplementedException();
+        isScoring = false;
+        nodeToBeScored = null;
     }
 
 
     private void OnParkingSpaceEntered(object sender, ParkingSpaceTransitEventArgs e)
     {
-        throw new NotImplementedException();
+        isScoring = true;
+        nodeToBeScored = e.EnteringNode;
     }
 
 }
