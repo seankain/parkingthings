@@ -46,11 +46,12 @@ public partial class ParkingSpace : Node3D
     {
         var scoreNodeForward = -nodeToBeScored.Transform.Basis.Z;
         var angle = scoreNodeForward.AngleTo(this.Transform.Basis.Z);
-        var fr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontRightPost.GlobalPosition);
-        var fl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontLeftPost.GlobalPosition);
-        var rr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearRightPost.GlobalPosition);
-        var rl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearLeftPost.GlobalPosition);
-        GD.Print($"RF:{fr_dist} LF:{fl_dist} RR:{rr_dist} RL:{rl_dist} angle:{angle}");
+        var center_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.GlobalPosition);
+        // var fr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontRightPost.GlobalPosition);
+        // var fl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontLeftPost.GlobalPosition);
+        // var rr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearRightPost.GlobalPosition);
+        // var rl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearLeftPost.GlobalPosition);
+        GD.Print($"dist:{center_dist} angle:{Mathf.RadToDeg(angle)}");
         // todo actually make a score
         return (uint)angle;
     }
