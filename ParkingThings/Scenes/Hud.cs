@@ -9,11 +9,20 @@ public partial class Hud : CanvasLayer
 
     private Label messageLabel;
 
+    private Game game;
+
     public override void _Ready()
     {
         timerLabel = GetNode<Label>("Timer");
         scoreLabel = GetNode<Label>("Score");
         messageLabel = GetNode<Label>("Message");
+    }
+
+    public override void _Process(double delta)
+    {
+        game = GetNode<Game>("/root/Game");
+        UpdateScore(game.Score);
+        UpdateLevelTime(game.LevelRemainingSeconds);
     }
 
 
@@ -29,7 +38,7 @@ public partial class Hud : CanvasLayer
         scoreLabel.Text = score.ToString();
     }
 
-    public void UpdateLevelTime(int secondsRemaining)
+    public void UpdateLevelTime(double secondsRemaining)
     {
         timerLabel.Text = TimeSpan.FromSeconds(secondsRemaining).ToString();
     }

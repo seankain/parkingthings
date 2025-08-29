@@ -1,10 +1,18 @@
 using System;
+using System.Collections.Generic;
+public enum ObstacleType
+{
+    Vehicle,
+    Person,
+    Wildlife,
+    Curb,
+    TrafficControl
+}
 
 public class LevelData
 {
     public uint OffroadingIncidents = 0;
-    public uint CarCollisions = 0;
-    public uint WildlifeCollisions = 0;
+    public List<ObstacleType> CollisionEvents = new();
 }
 
 public class LevelDefaults

@@ -42,18 +42,46 @@ public partial class ParkingSpace : Node3D
         }
     }
 
-    private uint CalculateCurrentParkingScore()
+    private int CalculateCurrentParkingScore()
     {
         var scoreNodeForward = -nodeToBeScored.Transform.Basis.Z;
         var angle = scoreNodeForward.AngleTo(this.Transform.Basis.Z);
-        var center_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.GlobalPosition);
+        var centerDist = nodeToBeScored.GlobalPosition.DistanceTo(this.GlobalPosition);
         // var fr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontRightPost.GlobalPosition);
         // var fl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontLeftPost.GlobalPosition);
         // var rr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearRightPost.GlobalPosition);
         // var rl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearLeftPost.GlobalPosition);
-        GD.Print($"dist:{center_dist} angle:{Mathf.RadToDeg(angle)}");
+        // Angle rank is |angle-90.0|
+        // 0 - A
+        // 1 - B
+        // 2 - C
+        // 3 - D
+        //>3 - F
+        var angleConverted = Mathf.Abs(Mathf.RadToDeg(angle) - 90.0);
+        var angleRankNum = (int)angleConverted;
+        if (angleRankNum > 3)
+        {
+            angleRankNum = 3;
+        }
+        var distRankNum = 3;
+        if (centerDist <= 0.5)
+        {
+            distRankNum = 0;
+        }
+        if (centerDist > 0.5 && centerDist <= 0.9) { distRankNum = 1; }
+        if (centerDist > 0.9 && centerDist <= 1.5) { distRankNum = 2; }
+        if (centerDist > 1.5 && centerDist <= 2.0) { distRankNum = 3; }
+
+        return (int)((distRankNum + angleRankNum) / 2);
+        // Distance rank is:
+        // 0.5 A
+        // 0.9 B
+        // 1.5 C
+        // 2.0 D
+        // > 2.5 F
+        GD.Print($"dist:{centerDist} angle:{Mathf.RadToDeg(angle)}");
         // todo actually make a score
-        return (uint)angle;
+        return (int)angle;
     }
 
 

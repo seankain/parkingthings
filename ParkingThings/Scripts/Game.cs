@@ -10,7 +10,9 @@ public enum GameState
 public partial class Game : Node
 {
     public uint Level = 0;
-    public uint Score = 0;
+    public int Score = 0;
+
+    public LevelData levelData;
 
     public GameState State;
 
@@ -20,6 +22,11 @@ public partial class Game : Node
     public double LevelOverRemainingSeconds = 0;
 
     public double LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds;
+
+    public override void _Ready()
+    {
+        levelData = new LevelData();
+    }
 
     public override void _Process(double delta)
     {
@@ -57,6 +64,7 @@ public partial class Game : Node
 
     private void ResetLevel()
     {
+        levelData = new LevelData();
         LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (Level * LevelDefaults.LevelTimeDecrement);
         if (LevelRemainingSeconds <= 0)
         {
