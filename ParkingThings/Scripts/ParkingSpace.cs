@@ -72,16 +72,17 @@ public partial class ParkingSpace : Node3D
         if (centerDist > 0.9 && centerDist <= 1.5) { distRankNum = 2; }
         if (centerDist > 1.5 && centerDist <= 2.0) { distRankNum = 3; }
 
-        return (int)((distRankNum + angleRankNum) / 2);
+
         // Distance rank is:
         // 0.5 A
         // 0.9 B
         // 1.5 C
         // 2.0 D
         // > 2.5 F
-        GD.Print($"dist:{centerDist} angle:{Mathf.RadToDeg(angle)}");
         // todo actually make a score
-        return (int)angle;
+        var rank = (int)((distRankNum + angleRankNum) / 2);
+        GD.Print($"dist:{centerDist} angle:{Mathf.RadToDeg(angle)} {rank}");
+        return rank;
     }
 
 

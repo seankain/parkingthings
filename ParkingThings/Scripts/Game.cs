@@ -25,6 +25,7 @@ public partial class Game : Node
 
     public override void _Ready()
     {
+        GD.Print("game script ready");
         levelData = new LevelData();
     }
 
@@ -61,6 +62,19 @@ public partial class Game : Node
                 return;
         }
     }
+
+    private void SwitchToSpectatorCamera()
+    {
+
+        var SpectatorCamera = GetNode<Camera3D>("SpectatorCamera");
+        SpectatorCamera.MakeCurrent();
+
+    }
+    private void SwitchToPlayerCamera()
+    {
+        var playerCamera = GetNode("Player/Camera3D");
+    }
+
 
     private void ResetLevel()
     {
