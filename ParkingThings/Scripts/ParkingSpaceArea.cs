@@ -11,7 +11,7 @@ public enum ParkingSpaceTriggerType
 
 public class ParkingSpaceTransitEventArgs
 {
-    public Node3D EnteringNode;
+    public Player EnteringNode;
 }
 
 public delegate void ParkingSpaceEnteredEventHandler(object sender, ParkingSpaceTransitEventArgs e);
@@ -45,7 +45,7 @@ public partial class ParkingSpaceArea : Area3D
             if (o.IsInGroup("Player"))
             {
 
-                OnParkingSpaceEntered(new ParkingSpaceTransitEventArgs { EnteringNode = o });
+                OnParkingSpaceEntered(new ParkingSpaceTransitEventArgs { EnteringNode = o as Player });
             }
         };
 
@@ -54,7 +54,7 @@ public partial class ParkingSpaceArea : Area3D
             GD.Print($"{o.Name} exited parking space");
             if (o.IsInGroup("Player"))
             {
-                OnParkingSpaceExited(new ParkingSpaceTransitEventArgs { EnteringNode = o });
+                OnParkingSpaceExited(new ParkingSpaceTransitEventArgs { EnteringNode = o as Player });
             }
         };
     }

@@ -17,12 +17,14 @@ public partial class Player : VehicleBody3D
 
     private bool respawnPressed = false;
 
+    private bool inputPaused = false;
+
     //private double Steering = 0;
     //private double EngineForce = 0;
 
     public override void _PhysicsProcess(double delta)
     {
-
+        if (inputPaused) { return; }
         Steering = Mathf.MoveToward(Steering, Input.GetAxis("Right", "Left") * MAX_STEER, (float)delta * SteeringSpeed);
         EngineForce = Input.GetAxis("Back", "Forward") * ENGINE_POWER;
     }
@@ -52,6 +54,15 @@ public partial class Player : VehicleBody3D
             respawnPressed = false;
         }
 
+    }
+
+    public void PauseInput()
+    {
+        inputPaused = true;
+    }
+    public void ResumeInput()
+    {
+        inputPaused = false;
     }
 
     private void Respawn()

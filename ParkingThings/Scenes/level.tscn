@@ -147,3 +147,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83, 0, -1.54)
 [node name="Hud" parent="." instance=ExtResource("7_8c0lf")]
 
 [editable path="Sketchfab_Scene"]
+[editable path="Player"]

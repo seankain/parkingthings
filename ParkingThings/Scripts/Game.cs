@@ -63,11 +63,20 @@ public partial class Game : Node
         }
     }
 
+    public void EndLevel()
+    {
+        State = GameState.LevelOver;
+        var camControl = GetNode<CameraControl>("Player/SpringArm3D");
+        camControl.StartIdleRotation();
+        var player = GetNode<Player>("Player");
+        player.PauseInput();
+
+    }
+
     private void SwitchToSpectatorCamera()
     {
 
-        var SpectatorCamera = GetNode<Camera3D>("SpectatorCamera");
-        SpectatorCamera.MakeCurrent();
+
 
     }
     private void SwitchToPlayerCamera()
@@ -86,6 +95,9 @@ public partial class Game : Node
             LevelRemainingSeconds = LevelDefaults.LevelDefaultMinTimeSeconds;
         }
         State = GameState.LevelActive;
+        var player = GetNode<Player>("Player");
+        player.ResumeInput();
+
     }
 
 }
