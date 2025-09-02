@@ -39,7 +39,10 @@ public partial class ParkingSpace : Node3D
         if (isScoring)
         {
             game.Score = CalculateCurrentParkingScore();
-            if (nodeToBeScored.EngineForce <= 100)
+            GD.Print(nodeToBeScored.EngineForce);
+            // TODO magic number found through logging since car kind of idly rolls
+            // Handle this in the actual car controller
+            if (nodeToBeScored.LinearVelocity.Length() < 0.02)
             {
                 game.EndLevel();
             }
@@ -85,7 +88,7 @@ public partial class ParkingSpace : Node3D
         // > 2.5 F
         // todo: factor in collisions with cars, animals etc
         var rank = (int)((distRankNum + angleRankNum) / 2);
-        GD.Print($"dist:{centerDist} angle:{Mathf.RadToDeg(angle)} {rank}");
+        //GD.Print($"dist:{centerDist} angle:{Mathf.RadToDeg(angle)} {rank}");
         return rank;
     }
 

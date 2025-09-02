@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public enum GameState
 {
@@ -22,7 +23,6 @@ public partial class Game : Node
     public double LevelOverRemainingSeconds = 0;
 
     public double LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds;
-
     public override void _Ready()
     {
         GD.Print("game script ready");
@@ -47,6 +47,7 @@ public partial class Game : Node
                 break;
             case GameState.LevelOver:
                 LevelOverRemainingSeconds -= delta;
+                GD.Print($"level over time {LevelOverRemainingSeconds}");
                 if (LevelOverRemainingSeconds <= 0)
                 {
                     // Done level over idling, start resetting level
@@ -66,27 +67,18 @@ public partial class Game : Node
     public void EndLevel()
     {
         State = GameState.LevelOver;
-        var camControl = GetNode<CameraControl>("Player/SpringArm3D");
+        LevelOverRemainingSeconds = LevelOverTimeSeconds;
+        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
         camControl.StartIdleRotation();
-        var player = GetNode<Player>("Player");
+        var player = GetTree().Root.GetNode<Player>("/root/Level/Player");
         player.PauseInput();
 
-    }
-
-    private void SwitchToSpectatorCamera()
-    {
-
-
-
-    }
-    private void SwitchToPlayerCamera()
-    {
-        var playerCamera = GetNode("Player/Camera3D");
     }
 
 
     private void ResetLevel()
     {
+        State = GameState.LevelActive;
         levelData = new LevelData();
         LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (Level * LevelDefaults.LevelTimeDecrement);
         if (LevelRemainingSeconds <= 0)
@@ -94,9 +86,12 @@ public partial class Game : Node
             // Force later levels to have minimum time to complete
             LevelRemainingSeconds = LevelDefaults.LevelDefaultMinTimeSeconds;
         }
-        State = GameState.LevelActive;
-        var player = GetNode<Player>("Player");
+        var player = GetNode<Player>("/root/Level/Player");
+        player.Respawn();
         player.ResumeInput();
+        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
+        camControl.SnapToDefault();
+
 
     }
 

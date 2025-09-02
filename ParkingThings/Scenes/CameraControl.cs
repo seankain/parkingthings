@@ -87,7 +87,7 @@ public partial class CameraControl : Node3D
     public void DoIdleRotation(double delta)
     {
         var rot = this.Rotation;
-        rot.X -= (1 * (float)delta);
+        //rot.X -= (1 * (float)delta);
         //rot.X = Mathf.Clamp(this.Rotation.X, -TiltMax, TiltMax);
         rot.Y += (1 * (float)delta);
         rot.Y = Mathf.Clamp(rot.Y, 0, 360);

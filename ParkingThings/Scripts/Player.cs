@@ -24,7 +24,7 @@ public partial class Player : VehicleBody3D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (inputPaused) { return; }
+        if (inputPaused) { Steering = 0; EngineForce = 0; return; }
         Steering = Mathf.MoveToward(Steering, Input.GetAxis("Right", "Left") * MAX_STEER, (float)delta * SteeringSpeed);
         EngineForce = Input.GetAxis("Back", "Forward") * ENGINE_POWER;
     }
@@ -65,7 +65,7 @@ public partial class Player : VehicleBody3D
         inputPaused = false;
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         var respawn = GetTree().GetNodesInGroup("Respawn")[0] as Node3D;
         this.GlobalTransform = new Transform3D(respawn.GlobalTransform.Basis, respawn.GlobalPosition);
