@@ -25,11 +25,25 @@ public partial class ParkingSpace : Node3D
     [Export]
     public Node3D RearLeftPost;
 
+    [Export]
+    public Area3D LeftLine;
+
+    [Export]
+    public Area3D RightLine;
+
+    private bool overLeftLine = false;
+
+    private bool overRightLine = false;
+
 
     public override void _Ready()
     {
         area.ParkingSpaceEntered += OnParkingSpaceEntered;
         area.ParkingSpaceExited += OnParkingSpaceExited;
+        LeftLine.BodyEntered += (node) => { if (node.IsInGroup("Player")) { overLeftLine = true; } };
+        LeftLine.BodyExited += (node) => { if (node.IsInGroup("Player")) { overLeftLine = false; } };
+        RightLine.BodyEntered += (node) => { if (node.IsInGroup("Player")) { overRightLine = true; } };
+        RightLine.BodyExited += (node) => { if (node.IsInGroup("Player")) { overRightLine = false; } };
         game = GetNode<Game>("/root/Game");
         base._Ready();
     }
@@ -39,11 +53,12 @@ public partial class ParkingSpace : Node3D
         if (isScoring)
         {
             game.Score = CalculateCurrentParkingScore();
-            GD.Print(nodeToBeScored.EngineForce);
+            //GD.Print(nodeToBeScored.EngineForce);
             // TODO magic number found through logging since car kind of idly rolls
             // Handle this in the actual car controller
             if (nodeToBeScored.LinearVelocity.Length() < 0.02)
             {
+                isScoring = false;
                 game.EndLevel();
             }
         }
@@ -54,6 +69,7 @@ public partial class ParkingSpace : Node3D
         var scoreNodeForward = -nodeToBeScored.Transform.Basis.Z;
         var angle = scoreNodeForward.AngleTo(this.Transform.Basis.Z);
         var centerDist = nodeToBeScored.GlobalPosition.DistanceTo(this.GlobalPosition);
+
         // var fr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontRightPost.GlobalPosition);
         // var fl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontLeftPost.GlobalPosition);
         // var rr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearRightPost.GlobalPosition);
@@ -88,6 +104,8 @@ public partial class ParkingSpace : Node3D
         // > 2.5 F
         // todo: factor in collisions with cars, animals etc
         var rank = (int)((distRankNum + angleRankNum) / 2);
+        if (overLeftLine) { rank += 1; }
+        if (overRightLine) { rank += 1; }
         //GD.Print($"dist:{centerDist} angle:{Mathf.RadToDeg(angle)} {rank}");
         return rank;
     }

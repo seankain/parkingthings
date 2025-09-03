@@ -10,7 +10,7 @@ public enum GameState
 }
 public partial class Game : Node
 {
-    public uint Level = 0;
+    public uint Level = 1;
     public int Score = 0;
 
     public LevelData levelData;
@@ -38,26 +38,23 @@ public partial class Game : Node
                 // Ran out of time
                 if (LevelRemainingSeconds <= 0)
                 {
-                    State = GameState.LevelOver;
-                    // Fill up the countdown timer
-                    LevelOverRemainingSeconds = LevelOverTimeSeconds;
+                    EndLevel();
                     return;
                 }
                 // Do other active level stuff, managing scoring/npcs etc
                 break;
             case GameState.LevelOver:
                 LevelOverRemainingSeconds -= delta;
-                GD.Print($"level over time {LevelOverRemainingSeconds}");
+                // GD.Print($"level over time {LevelOverRemainingSeconds}");
                 if (LevelOverRemainingSeconds <= 0)
                 {
                     // Done level over idling, start resetting level
-                    State = GameState.Resetting;
+                    ResetLevel();
                     return;
                 }
                 // Show the summary of pass or fail level
                 break;
             case GameState.Resetting:
-                ResetLevel();
                 return;
             default:
                 return;
@@ -66,6 +63,8 @@ public partial class Game : Node
 
     public void EndLevel()
     {
+        var hud = GetTree().Root.GetNode<Hud>("/root/Level/Hud");
+        hud.ShowMessage("Level Over");
         State = GameState.LevelOver;
         LevelOverRemainingSeconds = LevelOverTimeSeconds;
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
@@ -78,6 +77,8 @@ public partial class Game : Node
 
     private void ResetLevel()
     {
+        var hud = GetTree().Root.GetNode<Hud>("/root/Level/Hud");
+        hud.ShowMessage("GO!");
         State = GameState.LevelActive;
         levelData = new LevelData();
         LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (Level * LevelDefaults.LevelTimeDecrement);
@@ -91,8 +92,6 @@ public partial class Game : Node
         player.ResumeInput();
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
         camControl.SnapToDefault();
-
-
     }
 
 }

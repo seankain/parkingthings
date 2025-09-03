@@ -13,6 +13,11 @@ public class LevelData
 {
     public uint OffroadingIncidents = 0;
     public List<ObstacleType> CollisionEvents = new();
+
+    public float ParkingAngle = 0;
+
+    public bool OverLeftLine = false;
+    public bool OverRightLIne = false;
 }
 
 public class LevelDefaults
