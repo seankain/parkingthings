@@ -35,6 +35,9 @@ public partial class ParkingSpace : Node3D
 
     private bool overRightLine = false;
 
+    //TODO delete
+    private DebugHud debugHud;
+
 
     public override void _Ready()
     {
@@ -45,6 +48,7 @@ public partial class ParkingSpace : Node3D
         RightLine.BodyEntered += (node) => { if (node.IsInGroup("Player")) { overRightLine = true; } };
         RightLine.BodyExited += (node) => { if (node.IsInGroup("Player")) { overRightLine = false; } };
         game = GetNode<Game>("/root/Game");
+        debugHud = GetNode<DebugHud>("/root/Level/DebugHud");
         base._Ready();
     }
 
@@ -106,6 +110,9 @@ public partial class ParkingSpace : Node3D
         var rank = (int)((distRankNum + angleRankNum) / 2);
         if (overLeftLine) { rank += 1; }
         if (overRightLine) { rank += 1; }
+        debugHud.AngleLabel.Text = $"Angle: {angleConverted} : {angleRankNum}";
+        debugHud.CenterDistLabel.Text = $"{centerDist} : {distRankNum}";
+        debugHud.OverLineLabel.Text = (overLeftLine || overRightLine).ToString();
         //GD.Print($"dist:{centerDist} angle:{Mathf.RadToDeg(angle)} {rank}");
         return rank;
     }

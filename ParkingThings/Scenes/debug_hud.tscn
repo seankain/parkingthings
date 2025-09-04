@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://de5sif3dt5gin"]
+
+[ext_resource type="Script" uid="uid://3rh78uw08r8q" path="res://Scripts/DebugHud.cs" id="1_v5w1d"]
+
+[node name="DebugHud" type="CanvasLayer" node_paths=PackedStringArray("AngleLabel", "CenterDistLabel", "OverLineLabel")]
+script = ExtResource("1_v5w1d")
+AngleLabel = NodePath("AngleLabel")
+CenterDistLabel = NodePath("CenterDistLabel")
+OverLineLabel = NodePath("OverLineLabel")
+
+[node name="AngleLabel" type="Label" parent="."]
+offset_top = 300.0
+offset_right = 40.0
+offset_bottom = 323.0
+
+[node name="CenterDistLabel" type="Label" parent="."]
+offset_top = 323.0
+offset_right = 40.0
+offset_bottom = 346.0
+
+[node name="OverLineLabel" type="Label" parent="."]
+offset_top = 346.0
+offset_right = 40.0
+offset_bottom = 369.0
