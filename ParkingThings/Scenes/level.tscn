@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0kxoayxkvhfa"]
+[gd_scene load_steps=23 format=3 uid="uid://c0kxoayxkvhfa"]
 
 [ext_resource type="PackedScene" uid="uid://war5oa36xae" path="res://Models/auzrea_parking_final/scene.gltf" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://cwtqheaxtihay" path="res://Scenes/simple_player.tscn" id="2_k5f4k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://o504camv5es0" path="res://Scripts/ParkingSpaceArea.cs" id="5_0f350"]
 [ext_resource type="PackedScene" uid="uid://bofllgs5qvswc" path="res://Scenes/simple_npc.tscn" id="5_8c0lf"]
 [ext_resource type="PackedScene" uid="uid://bjxcup2eji7tr" path="res://Scenes/hud.tscn" id="7_8c0lf"]
+[ext_resource type="PackedScene" uid="uid://daiular56p6dv" path="res://Models/canada-goose/source/canadaGoose.glb" id="7_bvt00"]
 [ext_resource type="PackedScene" uid="uid://de5sif3dt5gin" path="res://Scenes/debug_hud.tscn" id="8_754fn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5f4k"]
@@ -163,6 +164,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.61112)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ParkingSpace/RightLine"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.338379, 0.613213, -0.0161853)
 shape = SubResource("BoxShape3D_oqgf2")
+
+[node name="canadaGoose" parent="ParkingSpace/RightLine" instance=ExtResource("7_bvt00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.84704, 0.33728, 3.98139)
 
 [node name="Hud" parent="." instance=ExtResource("7_8c0lf")]
 
