@@ -1,13 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://c0kxoayxkvhfa"]
+[gd_scene load_steps=18 format=3 uid="uid://c0kxoayxkvhfa"]
 
 [ext_resource type="PackedScene" uid="uid://war5oa36xae" path="res://Models/auzrea_parking_final/scene.gltf" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://cwtqheaxtihay" path="res://Scenes/simple_player.tscn" id="2_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://b1qo306n543gh" path="res://Models/low_rise_wall_to_wall_office_building/scene.gltf" id="3_6phgx"]
-[ext_resource type="Script" uid="uid://bb5e0jwlvkctc" path="res://Scripts/ParkingSpace.cs" id="4_wqkje"]
-[ext_resource type="Script" uid="uid://o504camv5es0" path="res://Scripts/ParkingSpaceArea.cs" id="5_0f350"]
-[ext_resource type="PackedScene" uid="uid://bofllgs5qvswc" path="res://Scenes/simple_npc.tscn" id="5_8c0lf"]
+[ext_resource type="PackedScene" uid="uid://djuwpcmlcleer" path="res://Scenes/parking_space.tscn" id="4_0f350"]
 [ext_resource type="PackedScene" uid="uid://bjxcup2eji7tr" path="res://Scenes/hud.tscn" id="7_8c0lf"]
-[ext_resource type="PackedScene" uid="uid://daiular56p6dv" path="res://Models/canada-goose/source/canadaGoose.glb" id="7_bvt00"]
 [ext_resource type="PackedScene" uid="uid://de5sif3dt5gin" path="res://Scenes/debug_hud.tscn" id="8_754fn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5f4k"]
@@ -45,12 +42,6 @@ size = Vector3(1.1702, 0.787964, 1.96539)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_754fn"]
 size = Vector3(48.9465, 0.768433, 2.09839)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bvt00"]
-size = Vector3(6.08844, 3.12, 2.98465)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oqgf2"]
-size = Vector3(6.53809, 4.43486, 0.153595)
 
 [node name="Level" type="Node3D"]
 
@@ -120,53 +111,14 @@ shape = SubResource("BoxShape3D_754fn")
 [node name="Sketchfab_Scene2" parent="." instance=ExtResource("3_6phgx")]
 transform = Transform3D(-4.37114e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, -4.37114e-10, 43.4678, 0, -18.7427)
 
-[node name="ParkingSpace" type="Node3D" parent="." node_paths=PackedStringArray("area", "FrontRightPost", "FrontLeftPost", "RearRightPost", "RearLeftPost", "LeftLine", "RightLine")]
+[node name="ParkingSpace" parent="." instance=ExtResource("4_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -5.4238)
-script = ExtResource("4_wqkje")
-VehicleScene = ExtResource("5_8c0lf")
-area = NodePath("Area3D")
-FrontRightPost = NodePath("FrontRightPost")
-FrontLeftPost = NodePath("FrontLeftPost")
-RearRightPost = NodePath("RearRightPost")
-RearLeftPost = NodePath("RearLeftPost")
-LeftLine = NodePath("Leftline")
-RightLine = NodePath("RightLine")
 
-[node name="Area3D" type="Area3D" parent="ParkingSpace"]
-script = ExtResource("5_0f350")
+[node name="ParkingSpace2" parent="." instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -2.22054)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkingSpace/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390472, 1.06, -0.00361633)
-shape = SubResource("BoxShape3D_bvt00")
-
-[node name="RearRightPost" type="Node3D" parent="ParkingSpace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0, -1.58)
-
-[node name="RearLeftPost" type="Node3D" parent="ParkingSpace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0, 1.58)
-
-[node name="FrontLeftPost" type="Node3D" parent="ParkingSpace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83, 0, 1.54)
-
-[node name="FrontRightPost" type="Node3D" parent="ParkingSpace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83, 0, -1.54)
-
-[node name="Leftline" type="Area3D" parent="ParkingSpace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.59547)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkingSpace/Leftline"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.338379, 1.10422, -0.00912929)
-shape = SubResource("BoxShape3D_oqgf2")
-
-[node name="RightLine" type="Area3D" parent="ParkingSpace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.61112)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkingSpace/RightLine"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.338379, 0.613213, -0.0161853)
-shape = SubResource("BoxShape3D_oqgf2")
-
-[node name="canadaGoose" parent="ParkingSpace/RightLine" instance=ExtResource("7_bvt00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.84704, 0.33728, 3.98139)
+[node name="ParkingSpace3" parent="." instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, 1.00196)
 
 [node name="Hud" parent="." instance=ExtResource("7_8c0lf")]
 

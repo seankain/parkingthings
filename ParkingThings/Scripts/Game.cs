@@ -79,6 +79,7 @@ public partial class Game : Node
     {
         var hud = GetTree().Root.GetNode<Hud>("/root/Level/Hud");
         hud.ShowMessage("GO!");
+        hud.ClearScore();
         State = GameState.LevelActive;
         levelData = new LevelData();
         LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (Level * LevelDefaults.LevelTimeDecrement);

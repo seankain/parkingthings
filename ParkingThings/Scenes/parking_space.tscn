@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://djuwpcmlcleer"]
+
+[ext_resource type="Script" uid="uid://bb5e0jwlvkctc" path="res://Scripts/ParkingSpace.cs" id="1_7rkin"]
+[ext_resource type="PackedScene" uid="uid://bofllgs5qvswc" path="res://Scenes/simple_npc.tscn" id="2_eko60"]
+[ext_resource type="Script" uid="uid://o504camv5es0" path="res://Scripts/ParkingSpaceArea.cs" id="3_5rwma"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvt00"]
+size = Vector3(6.08844, 3.12, 2.98465)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oqgf2"]
+size = Vector3(6.53809, 4.43486, 0.153595)
+
+[node name="ParkingSpace" type="Node3D" node_paths=PackedStringArray("area", "FrontRightPost", "FrontLeftPost", "RearRightPost", "RearLeftPost", "LeftLine", "RightLine")]
+script = ExtResource("1_7rkin")
+VehicleScene = ExtResource("2_eko60")
+area = NodePath("Area3D")
+FrontRightPost = NodePath("FrontRightPost")
+FrontLeftPost = NodePath("FrontLeftPost")
+RearRightPost = NodePath("RearRightPost")
+RearLeftPost = NodePath("RearLeftPost")
+LeftLine = NodePath("Leftline")
+RightLine = NodePath("RightLine")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3_5rwma")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390472, 1.06, -0.00361633)
+shape = SubResource("BoxShape3D_bvt00")
+
+[node name="RearRightPost" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0, -1.58)
+
+[node name="RearLeftPost" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0, 1.58)
+
+[node name="FrontLeftPost" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83, 0, 1.54)
+
+[node name="FrontRightPost" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83, 0, -1.54)
+
+[node name="Leftline" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.59547)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Leftline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.338379, 1.10422, -0.00912929)
+shape = SubResource("BoxShape3D_oqgf2")
+
+[node name="RightLine" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.61112)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.338379, 0.613213, -0.0161853)
+shape = SubResource("BoxShape3D_oqgf2")
