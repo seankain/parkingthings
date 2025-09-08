@@ -6,7 +6,8 @@ public enum GameState
 {
     LevelActive,
     LevelOver,
-    Resetting
+    Resetting,
+    Attract
 }
 public partial class Game : Node
 {
@@ -23,10 +24,13 @@ public partial class Game : Node
     public double LevelOverRemainingSeconds = 0;
 
     public double LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds;
+
+    private Spawner spawner;
     public override void _Ready()
     {
         GD.Print("game script ready");
         levelData = new LevelData();
+        spawner = GetTree().Root.GetNode<Spawner>("/root/Level/Spawner");
     }
 
     public override void _Process(double delta)
@@ -93,6 +97,20 @@ public partial class Game : Node
         player.ResumeInput();
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
         camControl.SnapToDefault();
+        GenerateObstacles();
+    }
+
+    private void GenerateObstacles()
+    {
+        spawner.ClearVehicles();
+        var nodes = GetTree().GetNodesInGroup("ParkingSpace");
+        GD.Print($"Nodes count {nodes.Count}");
+        foreach (var n in nodes)
+        {
+            GD.Print(n);
+            var npcNode = (Node3D)n;
+            spawner.SpawnNpcVehicle(npcNode.GlobalPosition + 3 * Vector3.Up, npcNode.GlobalRotation);
+        }
     }
 
 }

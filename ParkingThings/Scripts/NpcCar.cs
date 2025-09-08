@@ -13,8 +13,8 @@ public partial class NpcCar : VehicleBody3D
 
     public override void _PhysicsProcess(double delta)
     {
-        Steering = Mathf.MoveToward(Steering, Input.GetAxis("Right", "Left") * MAX_STEER, (float)delta * SteeringSpeed);
-        EngineForce = Input.GetAxis("Back", "Forward") * ENGINE_POWER;
+        //Steering = Mathf.MoveToward(Steering, Input.GetAxis("Right", "Left") * MAX_STEER, (float)delta * SteeringSpeed);
+        //EngineForce = Input.GetAxis("Back", "Forward") * ENGINE_POWER;
     }
 
     public override void _Ready()

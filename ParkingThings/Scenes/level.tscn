@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://c0kxoayxkvhfa"]
+[gd_scene load_steps=20 format=3 uid="uid://c0kxoayxkvhfa"]
 
 [ext_resource type="PackedScene" uid="uid://war5oa36xae" path="res://Models/auzrea_parking_final/scene.gltf" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://cwtqheaxtihay" path="res://Scenes/simple_player.tscn" id="2_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://b1qo306n543gh" path="res://Models/low_rise_wall_to_wall_office_building/scene.gltf" id="3_6phgx"]
 [ext_resource type="PackedScene" uid="uid://djuwpcmlcleer" path="res://Scenes/parking_space.tscn" id="4_0f350"]
 [ext_resource type="PackedScene" uid="uid://bjxcup2eji7tr" path="res://Scenes/hud.tscn" id="7_8c0lf"]
+[ext_resource type="Script" uid="uid://bv5n1xxjl63xi" path="res://Scenes/Spawner.cs" id="7_754fn"]
 [ext_resource type="PackedScene" uid="uid://de5sif3dt5gin" path="res://Scenes/debug_hud.tscn" id="8_754fn"]
+[ext_resource type="PackedScene" uid="uid://bofllgs5qvswc" path="res://Scenes/simple_npc.tscn" id="8_bvt00"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5f4k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -111,18 +113,64 @@ shape = SubResource("BoxShape3D_754fn")
 [node name="Sketchfab_Scene2" parent="." instance=ExtResource("3_6phgx")]
 transform = Transform3D(-4.37114e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, -4.37114e-10, 43.4678, 0, -18.7427)
 
-[node name="ParkingSpace" parent="." instance=ExtResource("4_0f350")]
+[node name="ParkingSpace" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -5.4238)
 
-[node name="ParkingSpace2" parent="." instance=ExtResource("4_0f350")]
+[node name="ParkingSpace2" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -2.22054)
 
-[node name="ParkingSpace3" parent="." instance=ExtResource("4_0f350")]
+[node name="ParkingSpace3" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, 1.00196)
+
+[node name="ParkingSpace4" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, 4.28177)
+
+[node name="ParkingSpace5" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, 7.51259)
+
+[node name="ParkingSpace6" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, 10.7838)
+
+[node name="ParkingSpace7" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, 14.0146)
+
+[node name="ParkingSpace8" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, 17.2858)
+
+[node name="ParkingSpace9" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, 10.7434)
+
+[node name="ParkingSpace10" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, 7.4722)
+
+[node name="ParkingSpace11" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, 4.201)
+
+[node name="ParkingSpace12" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, 0.97019)
+
+[node name="ParkingSpace13" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, -2.30101)
+
+[node name="ParkingSpace14" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, -5.49144)
+
+[node name="ParkingSpace15" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, -8.76264)
+
+[node name="ParkingSpace16" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, -11.9935)
+
+[node name="ParkingSpace17" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, -15.2243)
 
 [node name="Hud" parent="." instance=ExtResource("7_8c0lf")]
 
 [node name="DebugHud" parent="." instance=ExtResource("8_754fn")]
+
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("7_754fn")
+NpcVehicleScene = ExtResource("8_bvt00")
 
 [editable path="Sketchfab_Scene"]
 [editable path="Player"]
