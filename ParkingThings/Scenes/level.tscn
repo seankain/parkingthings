@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0kxoayxkvhfa"]
+[gd_scene load_steps=21 format=3 uid="uid://c0kxoayxkvhfa"]
 
+[ext_resource type="Script" uid="uid://y5fhusu1235e" path="res://Scenes/Level.cs" id="1_bvt00"]
 [ext_resource type="PackedScene" uid="uid://war5oa36xae" path="res://Models/auzrea_parking_final/scene.gltf" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://cwtqheaxtihay" path="res://Scenes/simple_player.tscn" id="2_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://b1qo306n543gh" path="res://Models/low_rise_wall_to_wall_office_building/scene.gltf" id="3_6phgx"]
@@ -46,6 +47,7 @@ size = Vector3(1.1702, 0.787964, 1.96539)
 size = Vector3(48.9465, 0.768433, 2.09839)
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_bvt00")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_81xng")
@@ -115,6 +117,15 @@ transform = Transform3D(-4.37114e-10, 0, -0.01, 0, 0.01, 0, 0.01, 0, -4.37114e-1
 
 [node name="ParkingSpace" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -5.4238)
+
+[node name="ParkingSpace18" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -8.64779)
+
+[node name="ParkingSpace19" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -12.0591)
+
+[node name="ParkingSpace20" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -15.3971)
 
 [node name="ParkingSpace2" parent="." groups=["ParkingSpace"] instance=ExtResource("4_0f350")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26076, 0, -2.22054)

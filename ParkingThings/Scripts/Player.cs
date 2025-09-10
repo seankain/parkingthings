@@ -50,6 +50,7 @@ public partial class Player : VehicleBody3D
         base._IntegrateForces(state);
         if (respawnPressed)
         {
+            this.PlayerRespawned?.Invoke(this, new PlayerRespawnArgs());
             Respawn();
             respawnPressed = false;
         }
@@ -69,7 +70,6 @@ public partial class Player : VehicleBody3D
     {
         var respawn = GetTree().GetNodesInGroup("Respawn")[0] as Node3D;
         this.GlobalTransform = new Transform3D(respawn.GlobalTransform.Basis, respawn.GlobalPosition);
-        this.PlayerRespawned?.Invoke(this, new PlayerRespawnArgs());
         this.LinearVelocity = Vector3.Zero;
         this.AngularVelocity = Vector3.Zero;
         this.SetPhysicsProcess(true);

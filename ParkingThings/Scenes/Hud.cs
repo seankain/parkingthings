@@ -10,7 +10,7 @@ public partial class Hud : CanvasLayer
 
     private Label messageLabel;
 
-    private Game game;
+    private Level level;
 
     public override void _Ready()
     {
@@ -26,9 +26,9 @@ public partial class Hud : CanvasLayer
 
     public override void _Process(double delta)
     {
-        game = GetNode<Game>("/root/Game");
-        UpdateScore(game.Score);
-        UpdateLevelTime(game.LevelRemainingSeconds);
+        level = GetNode<Level>("/root/Level");
+        UpdateScore(level.Score);
+        UpdateLevelTime(level.LevelRemainingSeconds);
 
     }
 

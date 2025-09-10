@@ -25,4 +25,6 @@ public class LevelDefaults
     public static uint LevelDefaultTimeSeconds = 60;
     public static uint LevelDefaultMinTimeSeconds = 10;
     public static uint LevelTimeDecrement = 10;
+    public static uint StartingVehicleCount = 5;
+    public static uint VehicleIncrement = 5;
 }

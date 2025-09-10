@@ -17,14 +17,17 @@ public partial class Spawner : Node
         GD.Print("Setting player position");
         ((Node3D)npc).GlobalPosition = location;
         ((Node3D)npc).GlobalRotation = rotation;
+        npcNodes.Add(npc);
     }
 
     public void ClearVehicles()
     {
         while (npcNodes.Count > 0)
         {
-            RemoveChild(npcNodes[0]);
-            npcNodes[0].QueueFree();
+
+            //RemoveChild(npcNodes[0]);
+            //npcNodes[0].QueueFree();
+            npcNodes[0].Free();
             npcNodes.RemoveAt(0);
         }
     }

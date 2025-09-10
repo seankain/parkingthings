@@ -10,7 +10,7 @@ public partial class ParkingSpace : Node3D
     [Export]
     private ParkingSpaceArea area;
 
-    private Game game;
+    private Level level;
 
     private Player nodeToBeScored;
 
@@ -47,7 +47,7 @@ public partial class ParkingSpace : Node3D
         LeftLine.BodyExited += (node) => { if (node.IsInGroup("Player")) { overLeftLine = false; } };
         RightLine.BodyEntered += (node) => { if (node.IsInGroup("Player")) { overRightLine = true; } };
         RightLine.BodyExited += (node) => { if (node.IsInGroup("Player")) { overRightLine = false; } };
-        game = GetNode<Game>("/root/Game");
+        level = GetNode<Level>("/root/Level");
         debugHud = GetNode<DebugHud>("/root/Level/DebugHud");
         base._Ready();
     }
@@ -56,14 +56,14 @@ public partial class ParkingSpace : Node3D
     {
         if (isScoring)
         {
-            game.Score = CalculateCurrentParkingScore();
+            level.Score = CalculateCurrentParkingScore();
             //GD.Print(nodeToBeScored.EngineForce);
             // TODO magic number found through logging since car kind of idly rolls
             // Handle this in the actual car controller
             if (nodeToBeScored.LinearVelocity.Length() < 0.02)
             {
                 isScoring = false;
-                game.EndLevel();
+                level.EndLevel();
             }
         }
     }

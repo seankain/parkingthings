@@ -1,17 +1,10 @@
 using Godot;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 
-public enum GameState
+public partial class Level : Node3D
 {
-    LevelActive,
-    LevelOver,
-    Resetting,
-    Attract
-}
-public partial class Game : Node
-{
-    public uint Level = 1;
+    public uint LevelNumber = 1;
     public int Score = 0;
 
     public LevelData levelData;
@@ -25,12 +18,20 @@ public partial class Game : Node
 
     public double LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds;
 
+    private Player player;
+
     private Spawner spawner;
+
+    private Hud hud;
     public override void _Ready()
     {
-        GD.Print("game script ready");
         levelData = new LevelData();
-        spawner = GetTree().Root.GetNode<Spawner>("/root/Level/Spawner");
+        var root = GetTree().Root;
+        hud = root.GetNode<Hud>("/root/Level/Hud");
+        spawner = root.GetNode<Spawner>("/root/Level/Spawner");
+        player = root.GetNode<Player>("/root/Level/Player");
+        player.PlayerRespawned += (o, e) => { ResetLevel(); };
+        GenerateObstacles();
     }
 
     public override void _Process(double delta)
@@ -67,13 +68,11 @@ public partial class Game : Node
 
     public void EndLevel()
     {
-        var hud = GetTree().Root.GetNode<Hud>("/root/Level/Hud");
         hud.ShowMessage("Level Over");
         State = GameState.LevelOver;
         LevelOverRemainingSeconds = LevelOverTimeSeconds;
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
         camControl.StartIdleRotation();
-        var player = GetTree().Root.GetNode<Player>("/root/Level/Player");
         player.PauseInput();
 
     }
@@ -81,18 +80,16 @@ public partial class Game : Node
 
     private void ResetLevel()
     {
-        var hud = GetTree().Root.GetNode<Hud>("/root/Level/Hud");
         hud.ShowMessage("GO!");
         hud.ClearScore();
         State = GameState.LevelActive;
         levelData = new LevelData();
-        LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (Level * LevelDefaults.LevelTimeDecrement);
+        LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (LevelNumber * LevelDefaults.LevelTimeDecrement);
         if (LevelRemainingSeconds <= 0)
         {
             // Force later levels to have minimum time to complete
             LevelRemainingSeconds = LevelDefaults.LevelDefaultMinTimeSeconds;
         }
-        var player = GetNode<Player>("/root/Level/Player");
         player.Respawn();
         player.ResumeInput();
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
@@ -105,12 +102,31 @@ public partial class Game : Node
         spawner.ClearVehicles();
         var nodes = GetTree().GetNodesInGroup("ParkingSpace");
         GD.Print($"Nodes count {nodes.Count}");
-        foreach (var n in nodes)
+        var carsToGenerate = LevelNumber * LevelDefaults.VehicleIncrement;
+        if (carsToGenerate > nodes.Count)
         {
-            GD.Print(n);
-            var npcNode = (Node3D)n;
+            carsToGenerate = (uint)nodes.Count;
+        }
+        var spaceIdxs = new HashSet<int>();
+        while (spaceIdxs.Count < carsToGenerate)
+        {
+            var val = Random.Shared.Next(0, nodes.Count);
+            if (!spaceIdxs.Contains(val))
+            {
+                spaceIdxs.Add(val);
+            }
+        }
+        foreach (var idx in spaceIdxs)
+        {
+            var npcNode = (Node3D)nodes[idx];
             spawner.SpawnNpcVehicle(npcNode.GlobalPosition + 3 * Vector3.Up, new Vector3(0, 90, 0));
         }
+        // foreach (var n in nodes)
+        // {
+        //     GD.Print(n);
+        //     var npcNode = (Node3D)n;
+        //     spawner.SpawnNpcVehicle(npcNode.GlobalPosition + 3 * Vector3.Up, new Vector3(0, 90, 0));
+        // }
     }
 
 }
