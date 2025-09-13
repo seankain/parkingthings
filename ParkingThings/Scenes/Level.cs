@@ -10,6 +10,7 @@ public partial class Level : Node3D
     public LevelData levelData;
 
     public GameState State;
+    private GameState prevState;
 
     // How long to stay at level over
     public uint LevelOverTimeSeconds = 5;
@@ -23,11 +24,14 @@ public partial class Level : Node3D
     private Spawner spawner;
 
     private Hud hud;
+    private Menu menu;
     public override void _Ready()
     {
         levelData = new LevelData();
         var root = GetTree().Root;
         hud = root.GetNode<Hud>("/root/Level/Hud");
+        menu = root.GetNode<Menu>("/root/Level/Menu");
+        menu.OnPlayButtonPressed += (o, e) => { HideMenu(); };
         spawner = root.GetNode<Spawner>("/root/Level/Spawner");
         player = root.GetNode<Player>("/root/Level/Player");
         player.PlayerRespawned += (o, e) => { ResetLevel(); };
@@ -59,11 +63,38 @@ public partial class Level : Node3D
                 }
                 // Show the summary of pass or fail level
                 break;
+            case GameState.Menu:
+                return;
             case GameState.Resetting:
                 return;
             default:
                 return;
         }
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey eventKey)
+        {
+            if (eventKey.Pressed && eventKey.Keycode == Key.Escape)
+            {
+                ShowMenu();
+            }
+        }
+    }
+
+    public void ShowMenu()
+    {
+        menu.Show();
+        prevState = State;
+        State = GameState.Menu;
+        GetTree().Paused = true;
+    }
+    public void HideMenu()
+    {
+        menu.Hide();
+        GetTree().Paused = false;
+        State = prevState;
     }
 
     public void EndLevel()

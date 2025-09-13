@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://1q636o16n2vt"]
+
+[ext_resource type="Script" uid="uid://hsaxsgfbtg23" path="res://Scenes/Menu.cs" id="1_6pedr"]
+[ext_resource type="FontFile" uid="uid://c83o7i54w03w5" path="res://UI/Fonts/Duo-Dunkel.ttf" id="2_syfuq"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("QuitButton", "PlayButton")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6pedr")
+QuitButton = NodePath("Menu/VBoxContainer/QuitButton")
+PlayButton = NodePath("Menu/VBoxContainer/PlayButton")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Menu"]
+offset_right = 1151.0
+offset_bottom = 296.0
+theme_override_colors/font_color = Color(0.839216, 0.764706, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.215686, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.388235, 0, 1)
+theme_override_fonts/font = ExtResource("2_syfuq")
+theme_override_font_sizes/font_size = 72
+text = "Parking Things"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+offset_left = 450.0
+offset_top = 300.0
+offset_right = 750.0
+offset_bottom = 366.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "Quit"

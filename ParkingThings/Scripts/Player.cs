@@ -33,10 +33,10 @@ public partial class Player : VehicleBody3D
     {
         if (@event is InputEventKey eventKey)
         {
-            if (eventKey.Pressed && eventKey.Keycode == Key.Escape)
-            {
-                GetTree().Quit();
-            }
+            // if (eventKey.Pressed && eventKey.Keycode == Key.Escape)
+            // {
+            //     GetTree().Quit();
+            // }
             if (eventKey.Pressed && eventKey.Keycode == Key.R)
             {
                 //Respawn();

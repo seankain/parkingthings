@@ -7,7 +7,7 @@ public enum GameState
     LevelActive,
     LevelOver,
     Resetting,
-    Attract
+    Menu
 }
 public partial class Game : Node
 {
