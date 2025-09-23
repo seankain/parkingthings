@@ -26,7 +26,7 @@ public partial class Hud : CanvasLayer
 
     public override void _Process(double delta)
     {
-        level = GetNode<Level>("/root/Level");
+        level = GetNode<Level>("/root/Main/Level");
         UpdateScore(level.Score);
         UpdateLevelTime(level.LevelRemainingSeconds);
 

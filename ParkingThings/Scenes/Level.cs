@@ -25,17 +25,20 @@ public partial class Level : Node3D
 
     private Hud hud;
     private Menu menu;
+
+    private bool menuVisble = false;
     public override void _Ready()
     {
         levelData = new LevelData();
         var root = GetTree().Root;
-        hud = root.GetNode<Hud>("/root/Level/Hud");
-        menu = root.GetNode<Menu>("/root/Level/Menu");
-        menu.OnPlayButtonPressed += (o, e) => { HideMenu(); };
-        spawner = root.GetNode<Spawner>("/root/Level/Spawner");
-        player = root.GetNode<Player>("/root/Level/Player");
+        hud = root.GetNode<Hud>("/root/Main/Level/Hud");
+        menu = root.GetNode<Menu>("/root/Main/Menu");
+        menu.SetResumeMode();
+        spawner = root.GetNode<Spawner>("/root/Main/Level/Spawner");
+        player = root.GetNode<Player>("/root/Main/Level/Player");
         player.PlayerRespawned += (o, e) => { ResetLevel(); };
         GenerateObstacles();
+        //ShowMenu();
     }
 
     public override void _Process(double delta)
@@ -72,37 +75,81 @@ public partial class Level : Node3D
         }
     }
 
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        if (@event is InputEventKey eventKey)
-        {
-            if (eventKey.Pressed && eventKey.Keycode == Key.Escape)
-            {
-                ShowMenu();
-            }
-        }
-    }
+    // public override void _UnhandledInput(InputEvent @event)
+    // {
+    //     if (@event is InputEventKey eventKey)
+    //     {
+    //         if (eventKey.Pressed && eventKey.Keycode == Key.Escape)
+    //         {
+    //             GD.Print($"pressy {Time.GetTicksMsec()}");
 
-    public void ShowMenu()
+    //             if (!menu.Visible)
+    //             {
+    //                 ShowMenu();
+    //             }
+    //             else
+    //             {
+    //                 HideMenu();
+    //             }
+    //         }
+    //     }
+    // }
+
+    // public override void _Input(InputEvent @event)
+    // {
+    //     if (@event is InputEventKey eventKey)
+    //     {
+    //         if (Input.IsActionPressed("Pause"))
+    //         {
+    //             if (menu.Visible)
+    //             {
+    //                 HideMenu();
+    //             }
+    //             else
+    //             {
+    //                 GD.Print("menu pressed");
+    //                 ShowMenu();
+    //             }
+    //         }
+    //     }
+    // }
+
+    public void Pause()
     {
-        menu.Show();
         prevState = State;
         State = GameState.Menu;
         GetTree().Paused = true;
     }
-    public void HideMenu()
+    public void Unpause()
     {
-        menu.Hide();
         GetTree().Paused = false;
         State = prevState;
     }
+
+
+    // public void ShowMenu()
+    // {
+    //     GD.Print("show");
+    //     menu.Show();
+    //     prevState = State;
+    //     State = GameState.Menu;
+    //     GetTree().Paused = true;
+    // }
+    // public void HideMenu()
+    // {
+    //     GD.Print("hide");
+    //     menu.Hide();
+    //     menu.Visible = false;
+    //     GetTree().Paused = false;
+    //     State = prevState;
+    // }
 
     public void EndLevel()
     {
         hud.ShowMessage("Level Over");
         State = GameState.LevelOver;
         LevelOverRemainingSeconds = LevelOverTimeSeconds;
-        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
+        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
         camControl.StartIdleRotation();
         player.PauseInput();
 
@@ -123,7 +170,7 @@ public partial class Level : Node3D
         }
         player.Respawn();
         player.ResumeInput();
-        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
+        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
         camControl.SnapToDefault();
         GenerateObstacles();
     }
@@ -150,7 +197,7 @@ public partial class Level : Node3D
         foreach (var idx in spaceIdxs)
         {
             var npcNode = (Node3D)nodes[idx];
-            spawner.SpawnNpcVehicle(npcNode.GlobalPosition + 3 * Vector3.Up, new Vector3(0, 90, 0));
+            spawner.SpawnNpcVehicle(npcNode.GlobalPosition + 1 * Vector3.Up, new Vector3(0, 90, 0));
         }
         // foreach (var n in nodes)
         // {

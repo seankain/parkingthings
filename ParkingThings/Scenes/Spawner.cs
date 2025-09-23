@@ -16,7 +16,7 @@ public partial class Spawner : Node
         AddChild(npc);
         GD.Print("Setting player position");
         ((Node3D)npc).GlobalPosition = location;
-        ((Node3D)npc).GlobalRotation = rotation;
+        ((Node3D)npc).GlobalRotationDegrees = rotation;
         npcNodes.Add(npc);
     }
 

@@ -11,106 +11,59 @@ public enum GameState
 }
 public partial class Game : Node
 {
-    public uint Level = 1;
-    public int Score = 0;
 
-    public LevelData levelData;
+    [Export]
+    public PackedScene LevelScene;
 
-    public GameState State;
+    private Hud hud;
+    private Menu menu;
 
-    // How long to stay at level over
-    public uint LevelOverTimeSeconds = 5;
-    // This counts down when in level over state
-    public double LevelOverRemainingSeconds = 0;
+    private Level level;
 
-    public double LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds;
-
-    private Spawner spawner;
     public override void _Ready()
     {
-        GD.Print("game script ready");
-        levelData = new LevelData();
-        spawner = GetTree().Root.GetNode<Spawner>("/root/Level/Spawner");
+        var root = GetTree().Root;
+        menu = root.GetNode<Menu>("/root/Main/Menu");
+        menu.SetPlayMode();
+        menu.OnPlayButtonPressed += (o, e) => { LoadLevel(); menu.Hide(); };
+        menu.OnResumeButtonPressed += (o, e) => { level.Unpause(); menu.Hide(); };
+        menu.Show();
     }
 
     public override void _Process(double delta)
     {
-        switch (State)
+
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventKey eventKey)
         {
-            case GameState.LevelActive:
-                LevelRemainingSeconds -= delta;
-                // Ran out of time
-                if (LevelRemainingSeconds <= 0)
+            if (Input.IsActionPressed("Pause"))
+            {
+                if (level.State == GameState.Menu)
                 {
-                    EndLevel();
-                    return;
+                    //already paused so unpausing with same input
+                    level.Unpause();
+                    menu.Hide();
                 }
-                // Do other active level stuff, managing scoring/npcs etc
-                break;
-            case GameState.LevelOver:
-                LevelOverRemainingSeconds -= delta;
-                // GD.Print($"level over time {LevelOverRemainingSeconds}");
-                if (LevelOverRemainingSeconds <= 0)
+                else
                 {
-                    // Done level over idling, start resetting level
-                    ResetLevel();
-                    return;
+                    level.Pause();
+                    menu.Show();
                 }
-                // Show the summary of pass or fail level
-                break;
-            case GameState.Resetting:
-                return;
-            default:
-                return;
+            }
         }
     }
 
-    public void EndLevel()
+    private void LoadLevel()
     {
-        var hud = GetTree().Root.GetNode<Hud>("/root/Level/Hud");
-        hud.ShowMessage("Level Over");
-        State = GameState.LevelOver;
-        LevelOverRemainingSeconds = LevelOverTimeSeconds;
-        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
-        camControl.StartIdleRotation();
-        var player = GetTree().Root.GetNode<Player>("/root/Level/Player");
-        player.PauseInput();
+        var p = GD.Load<PackedScene>(LevelScene.ResourcePath);
+        var level_instance = p.Instantiate();
+        AddChild(level_instance);
+        this.level = (Level)level_instance;
 
     }
 
-
-    private void ResetLevel()
-    {
-        var hud = GetTree().Root.GetNode<Hud>("/root/Level/Hud");
-        hud.ShowMessage("GO!");
-        hud.ClearScore();
-        State = GameState.LevelActive;
-        levelData = new LevelData();
-        LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (Level * LevelDefaults.LevelTimeDecrement);
-        if (LevelRemainingSeconds <= 0)
-        {
-            // Force later levels to have minimum time to complete
-            LevelRemainingSeconds = LevelDefaults.LevelDefaultMinTimeSeconds;
-        }
-        var player = GetNode<Player>("/root/Level/Player");
-        player.Respawn();
-        player.ResumeInput();
-        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Level/Player/SpringArm3D");
-        camControl.SnapToDefault();
-        GenerateObstacles();
-    }
-
-    private void GenerateObstacles()
-    {
-        spawner.ClearVehicles();
-        var nodes = GetTree().GetNodesInGroup("ParkingSpace");
-        GD.Print($"Nodes count {nodes.Count}");
-        foreach (var n in nodes)
-        {
-            GD.Print(n);
-            var npcNode = (Node3D)n;
-            spawner.SpawnNpcVehicle(npcNode.GlobalPosition + 3 * Vector3.Up, new Vector3(0, 90, 0));
-        }
-    }
 
 }

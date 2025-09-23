@@ -47,8 +47,8 @@ public partial class ParkingSpace : Node3D
         LeftLine.BodyExited += (node) => { if (node.IsInGroup("Player")) { overLeftLine = false; } };
         RightLine.BodyEntered += (node) => { if (node.IsInGroup("Player")) { overRightLine = true; } };
         RightLine.BodyExited += (node) => { if (node.IsInGroup("Player")) { overRightLine = false; } };
-        level = GetNode<Level>("/root/Level");
-        debugHud = GetNode<DebugHud>("/root/Level/DebugHud");
+        level = GetNode<Level>("/root/Main/Level");
+        debugHud = GetNode<DebugHud>("/root/Main/Level/DebugHud");
         base._Ready();
     }
 
