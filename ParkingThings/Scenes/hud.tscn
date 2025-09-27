@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjxcup2eji7tr"]
+[gd_scene load_steps=5 format=3 uid="uid://bjxcup2eji7tr"]
 
 [ext_resource type="Script" uid="uid://drmyfm35vmihm" path="res://Scenes/Hud.cs" id="1_e0onf"]
-[ext_resource type="FontFile" uid="uid://dgespmvh3ufe6" path="res://UI/Fonts/Sans Serif Shaded.ttf" id="2_fccik"]
+[ext_resource type="Script" uid="uid://demtmgbfpb82e" path="res://Scenes/LevelScoreHudElement.cs" id="2_6fbih"]
 [ext_resource type="FontFile" uid="uid://38ocn43htkr" path="res://UI/Fonts/BasicHandwriting.ttf" id="3_bjfho"]
+[ext_resource type="FontFile" uid="uid://cnqjcxtutar5f" path="res://UI/Fonts/ThreeDimRightwardsRound.ttf" id="3_t1xeu"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_e0onf")
@@ -37,66 +38,71 @@ grow_vertical = 2
 
 [node name="MessageTimer" type="Timer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="LevelScoreVBox" type="VBoxContainer" parent="."]
 offset_left = 556.0
 offset_top = 304.0
 offset_right = 596.0
 offset_bottom = 344.0
+script = ExtResource("2_6fbih")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CarsHitHbox" type="HBoxContainer" parent="LevelScoreVBox"]
 layout_mode = 2
 
-[node name="CarsHitLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="CarsHitLabel" type="Label" parent="LevelScoreVBox/CarsHitHbox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_fonts/font = ExtResource("3_t1xeu")
 text = "Cars hit:"
 
-[node name="CarsHitCount" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="CarsHitCount" type="Label" parent="LevelScoreVBox/CarsHitHbox"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="AnimalsHitHBox" type="HBoxContainer" parent="LevelScoreVBox"]
 layout_mode = 2
 
-[node name="LivingThingsHitLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="LivingThingsHitLabel" type="Label" parent="LevelScoreVBox/AnimalsHitHBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_fonts/font = ExtResource("3_t1xeu")
 text = "Living Things Hit:"
 
-[node name="LivingThingsHitCount" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="LivingThingsHitCount" type="Label" parent="LevelScoreVBox/AnimalsHitHBox"]
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="OffroadHBox" type="HBoxContainer" parent="LevelScoreVBox"]
 layout_mode = 2
 
-[node name="TimeOffroadLabel" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="TimeOffroadLabel" type="Label" parent="LevelScoreVBox/OffroadHBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_fonts/font = ExtResource("3_t1xeu")
 text = "Time Offroad:"
 
-[node name="TimeOffroadCount" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="TimeOffroadCount" type="Label" parent="LevelScoreVBox/OffroadHBox"]
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="InLinesHBox" type="HBoxContainer" parent="LevelScoreVBox"]
 layout_mode = 2
 
-[node name="InTheLinesLabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="InTheLinesLabel" type="Label" parent="LevelScoreVBox/InLinesHBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_fonts/font = ExtResource("3_t1xeu")
 text = "In The Lines:"
 
-[node name="InTheLinesValue" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="InTheLinesValue" type="Label" parent="LevelScoreVBox/InLinesHBox"]
 layout_mode = 2
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+[node name="GradeHBox" type="HBoxContainer" parent="LevelScoreVBox"]
 layout_mode = 2
 
-[node name="GradeLabel" type="Label" parent="VBoxContainer/HBoxContainer5"]
+[node name="GradeLabel" type="Label" parent="LevelScoreVBox/GradeHBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_fonts/font = ExtResource("3_t1xeu")
 text = "Final Grade:"
 
-[node name="GradeValue" type="Label" parent="VBoxContainer/HBoxContainer5"]
+[node name="GradeValue" type="Label" parent="LevelScoreVBox/GradeHBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_bjfho")
 theme_override_font_sizes/font_size = 72
+
+[node name="LevelScoreTimer" type="Timer" parent="LevelScoreVBox"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelScoreVBox"]

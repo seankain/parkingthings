@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Channels;
 public enum ObstacleType
 {
     Vehicle,
@@ -11,13 +12,50 @@ public enum ObstacleType
 
 public class LevelData
 {
-    public uint OffroadingIncidents = 0;
+    private static char[] RankMap = { 'A', 'B', 'C', 'D', 'F' };
+    //In seconds
+    public float OffroadingTime = 0;
     public List<ObstacleType> CollisionEvents = new();
 
-    public float ParkingAngle = 0;
+    public double ParkingAngle = 0;
+
+    public double CenterDistance = 0;
 
     public bool OverLeftLine = false;
-    public bool OverRightLIne = false;
+    public bool OverRightLine = false;
+
+    public char Grade { get { return CalculateFinalGrade(); } }
+
+    private char CalculateFinalGrade()
+    {
+        var angleRankNum = (int)ParkingAngle;
+        if (angleRankNum > 3)
+        {
+            angleRankNum = 3;
+        }
+        var distRankNum = 3;
+        if (CenterDistance <= 0.5)
+        {
+            distRankNum = 0;
+        }
+        if (CenterDistance > 0.5 && CenterDistance <= 0.9) { distRankNum = 1; }
+        if (CenterDistance > 0.9 && CenterDistance <= 1.5) { distRankNum = 2; }
+        if (CenterDistance > 1.5 && CenterDistance <= 2.0) { distRankNum = 3; }
+
+
+        // Distance rank is:
+        // 0.5 A
+        // 0.9 B
+        // 1.5 C
+        // 2.0 D
+        // > 2.5 F
+        // todo: factor in collisions with cars, animals etc
+        var rank = (int)((distRankNum + angleRankNum) / 2);
+        if (OverLeftLine) { rank += 1; }
+        if (OverRightLine) { rank += 1; }
+        if (rank > 5) { rank = 5; }
+        return RankMap[rank];
+    }
 }
 
 public class LevelDefaults

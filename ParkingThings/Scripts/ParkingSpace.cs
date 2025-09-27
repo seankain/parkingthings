@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.ComponentModel;
+using System.Threading;
 
 public partial class ParkingSpace : Node3D
 {
@@ -73,11 +74,7 @@ public partial class ParkingSpace : Node3D
         var scoreNodeForward = -nodeToBeScored.Transform.Basis.Z;
         var angle = scoreNodeForward.AngleTo(this.Transform.Basis.Z);
         var centerDist = nodeToBeScored.GlobalPosition.DistanceTo(this.GlobalPosition);
-
-        // var fr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontRightPost.GlobalPosition);
-        // var fl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.FrontLeftPost.GlobalPosition);
-        // var rr_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearRightPost.GlobalPosition);
-        // var rl_dist = nodeToBeScored.GlobalPosition.DistanceTo(this.RearLeftPost.GlobalPosition);
+        level.levelData.CenterDistance = centerDist;
         // Angle rank is |angle-90.0|
         // 0 - A
         // 1 - B
@@ -85,6 +82,7 @@ public partial class ParkingSpace : Node3D
         // 3 - D
         //>3 - F
         var angleConverted = Mathf.Abs(Mathf.RadToDeg(angle) - 90.0);
+        level.levelData.ParkingAngle = angleConverted;
         var angleRankNum = (int)angleConverted;
         if (angleRankNum > 3)
         {
@@ -113,6 +111,8 @@ public partial class ParkingSpace : Node3D
         debugHud.AngleLabel.Text = $"Angle: {angleConverted} : {angleRankNum}";
         debugHud.CenterDistLabel.Text = $"{centerDist} : {distRankNum}";
         debugHud.OverLineLabel.Text = (overLeftLine || overRightLine).ToString();
+        level.levelData.OverLeftLine = overLeftLine;
+        level.levelData.OverRightLine = overRightLine;
         //GD.Print($"dist:{centerDist} angle:{Mathf.RadToDeg(angle)} {rank}");
         return rank;
     }
