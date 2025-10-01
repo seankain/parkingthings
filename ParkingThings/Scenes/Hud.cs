@@ -12,6 +12,8 @@ public partial class Hud : CanvasLayer
 
     private Level level;
 
+    private LevelScoreHudElement levelScore;
+
     public override void _Ready()
     {
         timerLabel = GetNode<Label>("Timer");
@@ -22,6 +24,7 @@ public partial class Hud : CanvasLayer
         };
         scoreLabel = GetNode<Label>("Score");
         messageLabel = GetNode<Label>("Message");
+        levelScore = GetNode<LevelScoreHudElement>("LevelScoreVBox");
     }
 
     public override void _Process(double delta)
@@ -32,6 +35,17 @@ public partial class Hud : CanvasLayer
 
     }
 
+    public void ShowLevelScore()
+    {
+        levelScore.SetValueLabels(level.levelData);
+        levelScore.Show();
+        levelScore.PlayScoreAnimation();
+    }
+
+    public void HideLevelScore()
+    {
+        levelScore.Hide();
+    }
 
     public void ShowMessage(string text)
     {

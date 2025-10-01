@@ -22,6 +22,17 @@ public partial class Player : VehicleBody3D
     //private double Steering = 0;
     //private double EngineForce = 0;
 
+    public override void _Ready()
+    {
+        base._Ready();
+        this.BodyEntered += HandleCollision;
+    }
+
+    private void HandleCollision(Node body)
+    {
+        GD.Print(body.Name);
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (inputPaused) { Steering = 0; EngineForce = 0; return; }

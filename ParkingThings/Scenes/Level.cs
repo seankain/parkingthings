@@ -146,13 +146,13 @@ public partial class Level : Node3D
 
     public void EndLevel()
     {
-        hud.ShowMessage("Level Over");
+        //hud.ShowMessage("Level Over");
         State = GameState.LevelOver;
         LevelOverRemainingSeconds = LevelOverTimeSeconds;
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
         camControl.StartIdleRotation();
         player.PauseInput();
-
+        hud.ShowLevelScore();
     }
 
 
@@ -173,6 +173,7 @@ public partial class Level : Node3D
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
         camControl.SnapToDefault();
         GenerateObstacles();
+        hud.HideLevelScore();
     }
 
     private void GenerateObstacles()
