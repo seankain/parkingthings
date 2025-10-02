@@ -121,6 +121,7 @@ public partial class ParkingSpace : Node3D
     private void OnParkingSpaceExited(object sender, ParkingSpaceTransitEventArgs e)
     {
         isScoring = false;
+        level.PlayerInSpace = false;
         nodeToBeScored = null;
     }
 
@@ -128,6 +129,7 @@ public partial class ParkingSpace : Node3D
     private void OnParkingSpaceEntered(object sender, ParkingSpaceTransitEventArgs e)
     {
         isScoring = true;
+        level.PlayerInSpace = true;
         nodeToBeScored = e.EnteringNode;
     }
 

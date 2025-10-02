@@ -7,6 +7,8 @@ public partial class Level : Node3D
     public uint LevelNumber = 1;
     public int Score = 0;
 
+    public bool PlayerInSpace = false;
+
     public LevelData levelData;
 
     public GameState State;
@@ -61,7 +63,7 @@ public partial class Level : Node3D
                 if (LevelOverRemainingSeconds <= 0)
                 {
                     // Done level over idling, start resetting level
-                    ResetLevel();
+                    NextLevel();
                     return;
                 }
                 // Show the summary of pass or fail level
@@ -152,7 +154,14 @@ public partial class Level : Node3D
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
         camControl.StartIdleRotation();
         player.PauseInput();
-        hud.ShowLevelScore();
+        if (PlayerInSpace)
+        {
+            hud.ShowLevelScore();
+        }
+        else
+        {
+            hud.ShowMessage("FAILED TO PARK");
+        }
     }
 
 
@@ -176,6 +185,29 @@ public partial class Level : Node3D
         hud.HideLevelScore();
     }
 
+    private void NextLevel()
+    {
+        LevelNumber += 1;
+        levelData = new();
+        hud.ShowMessage("GO!");
+        hud.ClearScore();
+        State = GameState.LevelActive;
+        levelData = new LevelData();
+        LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (LevelNumber * LevelDefaults.LevelTimeDecrement);
+        if (LevelRemainingSeconds <= 0)
+        {
+            GD.Print($"level remaining seconds less than zero, setting to default of {LevelRemainingSeconds}");
+            // Force later levels to have minimum time to complete
+            LevelRemainingSeconds = LevelDefaults.LevelDefaultMinTimeSeconds;
+        }
+        player.Respawn();
+        player.ResumeInput();
+        var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
+        camControl.SnapToDefault();
+        GenerateObstacles();
+        hud.HideLevelScore();
+    }
+
     private void GenerateObstacles()
     {
         spawner.ClearVehicles();
@@ -184,7 +216,7 @@ public partial class Level : Node3D
         var carsToGenerate = LevelNumber * LevelDefaults.VehicleIncrement;
         if (carsToGenerate > nodes.Count)
         {
-            carsToGenerate = (uint)nodes.Count;
+            carsToGenerate = (uint)nodes.Count - 1;
         }
         var spaceIdxs = new HashSet<int>();
         while (spaceIdxs.Count < carsToGenerate)
