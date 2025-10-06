@@ -77,45 +77,6 @@ public partial class Level : Node3D
         }
     }
 
-    // public override void _UnhandledInput(InputEvent @event)
-    // {
-    //     if (@event is InputEventKey eventKey)
-    //     {
-    //         if (eventKey.Pressed && eventKey.Keycode == Key.Escape)
-    //         {
-    //             GD.Print($"pressy {Time.GetTicksMsec()}");
-
-    //             if (!menu.Visible)
-    //             {
-    //                 ShowMenu();
-    //             }
-    //             else
-    //             {
-    //                 HideMenu();
-    //             }
-    //         }
-    //     }
-    // }
-
-    // public override void _Input(InputEvent @event)
-    // {
-    //     if (@event is InputEventKey eventKey)
-    //     {
-    //         if (Input.IsActionPressed("Pause"))
-    //         {
-    //             if (menu.Visible)
-    //             {
-    //                 HideMenu();
-    //             }
-    //             else
-    //             {
-    //                 GD.Print("menu pressed");
-    //                 ShowMenu();
-    //             }
-    //         }
-    //     }
-    // }
-
     public void Pause()
     {
         prevState = State;
@@ -128,24 +89,6 @@ public partial class Level : Node3D
         State = prevState;
     }
 
-
-    // public void ShowMenu()
-    // {
-    //     GD.Print("show");
-    //     menu.Show();
-    //     prevState = State;
-    //     State = GameState.Menu;
-    //     GetTree().Paused = true;
-    // }
-    // public void HideMenu()
-    // {
-    //     GD.Print("hide");
-    //     menu.Hide();
-    //     menu.Visible = false;
-    //     GetTree().Paused = false;
-    //     State = prevState;
-    // }
-
     public void EndLevel()
     {
         //hud.ShowMessage("Level Over");
@@ -154,7 +97,7 @@ public partial class Level : Node3D
         var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
         camControl.StartIdleRotation();
         player.PauseInput();
-        if (PlayerInSpace)
+        if (GetPlayerInSpace())
         {
             hud.ShowLevelScore();
         }
@@ -164,15 +107,14 @@ public partial class Level : Node3D
         }
     }
 
-
     private void ResetLevel()
     {
         hud.ShowMessage("GO!");
         hud.ClearScore();
         State = GameState.LevelActive;
         levelData = new LevelData();
-        LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (LevelNumber * LevelDefaults.LevelTimeDecrement);
-        if (LevelRemainingSeconds <= 0)
+        LevelRemainingSeconds = ((double)LevelDefaults.LevelDefaultTimeSeconds) - ((double)(LevelNumber * LevelDefaults.LevelTimeDecrement));
+        if (LevelRemainingSeconds <= LevelDefaults.LevelDefaultMinTimeSeconds)
         {
             // Force later levels to have minimum time to complete
             LevelRemainingSeconds = LevelDefaults.LevelDefaultMinTimeSeconds;
@@ -193,7 +135,8 @@ public partial class Level : Node3D
         hud.ClearScore();
         State = GameState.LevelActive;
         levelData = new LevelData();
-        LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds - (LevelNumber * LevelDefaults.LevelTimeDecrement);
+        LevelRemainingSeconds = ((double)LevelDefaults.LevelDefaultTimeSeconds) - ((double)(LevelNumber * LevelDefaults.LevelTimeDecrement));
+        GD.Print($"Level Time: {LevelRemainingSeconds}");
         if (LevelRemainingSeconds <= 0)
         {
             GD.Print($"level remaining seconds less than zero, setting to default of {LevelRemainingSeconds}");
@@ -212,7 +155,6 @@ public partial class Level : Node3D
     {
         spawner.ClearVehicles();
         var nodes = GetTree().GetNodesInGroup("ParkingSpace");
-        GD.Print($"Nodes count {nodes.Count}");
         var carsToGenerate = LevelNumber * LevelDefaults.VehicleIncrement;
         if (carsToGenerate > nodes.Count)
         {
@@ -238,6 +180,17 @@ public partial class Level : Node3D
         //     var npcNode = (Node3D)n;
         //     spawner.SpawnNpcVehicle(npcNode.GlobalPosition + 3 * Vector3.Up, new Vector3(0, 90, 0));
         // }
+    }
+
+    private bool GetPlayerInSpace()
+    {
+        var nodes = GetTree().GetNodesInGroup("ParkingSpace");
+        foreach (var n in nodes)
+        {
+            if (((ParkingSpace)n).PlayerInBounds) { return true; }
+        }
+        return false;
+
     }
 
 }

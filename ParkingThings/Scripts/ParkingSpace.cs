@@ -32,6 +32,8 @@ public partial class ParkingSpace : Node3D
     [Export]
     public Area3D RightLine;
 
+    public bool PlayerInBounds = false;
+
     private bool overLeftLine = false;
 
     private bool overRightLine = false;
@@ -120,16 +122,20 @@ public partial class ParkingSpace : Node3D
 
     private void OnParkingSpaceExited(object sender, ParkingSpaceTransitEventArgs e)
     {
+        GD.Print($"exited {this.Name}");
         isScoring = false;
         level.PlayerInSpace = false;
+        PlayerInBounds = false;
         nodeToBeScored = null;
     }
 
 
     private void OnParkingSpaceEntered(object sender, ParkingSpaceTransitEventArgs e)
     {
+        GD.Print($"entered {this.Name}");
         isScoring = true;
         level.PlayerInSpace = true;
+        PlayerInBounds = true;
         nodeToBeScored = e.EnteringNode;
     }
 

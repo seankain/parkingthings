@@ -14,7 +14,6 @@ public partial class Spawner : Node
         var p = GD.Load<PackedScene>(NpcVehicleScene.ResourcePath);
         var npc = p.Instantiate();
         AddChild(npc);
-        GD.Print("Setting player position");
         ((Node3D)npc).GlobalPosition = location;
         ((Node3D)npc).GlobalRotationDegrees = rotation;
         npcNodes.Add(npc);

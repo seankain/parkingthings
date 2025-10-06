@@ -1,5 +1,7 @@
 using Godot;
+using Microsoft.VisualBasic;
 using System;
+using System.Runtime.CompilerServices;
 public class PlayerRespawnArgs { }
 
 public delegate void PlayerRespawnedEventHandler(object sender, PlayerRespawnArgs e);
@@ -28,9 +30,14 @@ public partial class Player : VehicleBody3D
         this.BodyEntered += HandleCollision;
     }
 
+
     private void HandleCollision(Node body)
     {
-        GD.Print(body.Name);
+
+        //if (body.GetNode<NpcCar>("SimplePlayer") != null)
+        //{
+        GD.Print("player hit a car");
+        //}
     }
 
     public override void _PhysicsProcess(double delta)

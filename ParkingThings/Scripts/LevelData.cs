@@ -53,7 +53,7 @@ public class LevelData
         var rank = (int)((distRankNum + angleRankNum) / 2);
         if (OverLeftLine) { rank += 1; }
         if (OverRightLine) { rank += 1; }
-        if (rank > 5) { rank = 5; }
+        if (rank > 4) { rank = 4; }
         return RankMap[rank];
     }
 }
@@ -61,8 +61,8 @@ public class LevelData
 public class LevelDefaults
 {
     public static uint LevelDefaultTimeSeconds = 60;
-    public static uint LevelDefaultMinTimeSeconds = 10;
-    public static uint LevelTimeDecrement = 10;
+    public static uint LevelDefaultMinTimeSeconds = 25;
+    public static uint LevelTimeDecrement = 5;
     public static uint StartingVehicleCount = 5;
-    public static uint VehicleIncrement = 5;
+    public static uint VehicleIncrement = 2;
 }

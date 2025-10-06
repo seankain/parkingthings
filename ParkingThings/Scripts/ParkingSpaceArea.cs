@@ -41,19 +41,24 @@ public partial class ParkingSpaceArea : Area3D
     {
         this.BodyEntered += (o) =>
         {
-            GD.Print($"{o.Name} entered parking space");
+
             if (o.IsInGroup("Player"))
             {
-
+                //GD.Print($"{o.Name} entered parking space");
                 OnParkingSpaceEntered(new ParkingSpaceTransitEventArgs { EnteringNode = o as Player });
             }
         };
 
         this.BodyExited += (o) =>
         {
-            GD.Print($"{o.Name} exited parking space");
+
             if (o.IsInGroup("Player"))
             {
+                // GD.Print($"{o.Name} exited parking space");
+                // foreach (var p in this.GetOverlappingBodies())
+                // {
+                //     GD.Print($"overlapping body {p.Name}");
+                // }
                 OnParkingSpaceExited(new ParkingSpaceTransitEventArgs { EnteringNode = o as Player });
             }
         };
