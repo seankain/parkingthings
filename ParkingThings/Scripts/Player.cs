@@ -33,11 +33,10 @@ public partial class Player : VehicleBody3D
 
     private void HandleCollision(Node body)
     {
-
-        //if (body.GetNode<NpcCar>("SimplePlayer") != null)
-        //{
-        GD.Print("player hit a car");
-        //}
+        if (body.IsInGroup("NpcVehicle"))
+        {
+            GD.Print("player hit a car");
+        }
     }
 
     public override void _PhysicsProcess(double delta)

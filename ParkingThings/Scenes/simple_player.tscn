@@ -19,6 +19,8 @@ size = Vector3(1.96594, 1.18079, 2.72839)
 mass = 500.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_wy12b")
 ENGINE_POWER = 1.0
 

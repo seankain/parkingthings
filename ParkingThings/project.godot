@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="New Game Project"
 
+[global_group]
+
+NpcVehicle=""
+
 [input]
 
 Forward={
