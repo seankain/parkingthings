@@ -25,10 +25,11 @@ public class LevelData
     public bool OverRightLine = false;
 
     public char Grade { get { return CalculateFinalGrade(); } }
-
-    private char CalculateFinalGrade()
+    public int GradeAsNumeric { get { return CalculateRank(); } }
+    
+    private int CalculateRank()
     {
-        var angleRankNum = (int)ParkingAngle;
+         var angleRankNum = (int)ParkingAngle;
         if (angleRankNum > 3)
         {
             angleRankNum = 3;
@@ -49,11 +50,19 @@ public class LevelData
         // 1.5 C
         // 2.0 D
         // > 2.5 F
-        // todo: factor in collisions with cars, animals etc
         var rank = (int)((distRankNum + angleRankNum) / 2);
         if (OverLeftLine) { rank += 1; }
         if (OverRightLine) { rank += 1; }
+        // todo: do better to factor in collisions with cars, animals etc
+        // should it be an automatic F? should different collisions be weighted differently?
+        rank += CollisionEvents.Count;
         if (rank > 4) { rank = 4; }
+        return rank;
+    }
+
+    private char CalculateFinalGrade()
+    {
+        var rank = CalculateRank();
         return RankMap[rank];
     }
 }

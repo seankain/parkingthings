@@ -3,8 +3,13 @@ using Microsoft.VisualBasic;
 using System;
 using System.Runtime.CompilerServices;
 public class PlayerRespawnArgs { }
+public class PlayerHitObstacleArgs
+{
+    public ObstacleType ObstacleType;
+}
 
 public delegate void PlayerRespawnedEventHandler(object sender, PlayerRespawnArgs e);
+public delegate void PlayerHitObstacleEventHandler(object sender, PlayerHitObstacleArgs e);
 public partial class Player : VehicleBody3D
 {
     [Export]
@@ -16,6 +21,8 @@ public partial class Player : VehicleBody3D
     public float ENGINE_POWER = 300;
 
     public PlayerRespawnedEventHandler PlayerRespawned;
+
+    public PlayerHitObstacleEventHandler PlayerHitObstacle;
 
     private bool respawnPressed = false;
 
@@ -33,9 +40,12 @@ public partial class Player : VehicleBody3D
 
     private void HandleCollision(Node body)
     {
+        var args = new PlayerHitObstacleArgs();
         if (body.IsInGroup("NpcVehicle"))
         {
             GD.Print("player hit a car");
+            args.ObstacleType = ObstacleType.Vehicle;
+            PlayerHitObstacle?.Invoke(this, args);
         }
     }
 
