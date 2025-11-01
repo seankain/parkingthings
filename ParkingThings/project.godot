@@ -12,13 +12,13 @@ config_version=5
 
 config/name="Parking Things"
 run/main_scene="uid://dp5tnanbdwya7"
-config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 boot_splash/image="uid://nlj61ckuxaya"
 config/icon="res://icon.svg"
 
 [dotnet]
 
-project/assembly_name="New Game Project"
+project/assembly_name="ParkingThings"
 
 [global_group]
 
