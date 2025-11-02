@@ -14,7 +14,7 @@ public class LevelData
 {
     private static char[] RankMap = { 'A', 'B', 'C', 'D', 'F' };
     //In seconds
-    public float OffroadingTime = 0;
+    public double OffroadingTime = 0;
     public List<ObstacleType> CollisionEvents = new();
 
     public double ParkingAngle = 0;

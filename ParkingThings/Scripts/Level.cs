@@ -20,11 +20,8 @@ public partial class Level : Node3D
 	public double LevelOverRemainingSeconds = 0;
 
 	public double LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds;
-
 	private Player player;
-
 	private Spawner spawner;
-
 	private Hud hud;
 	private Menu menu;
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clll8hhfeikj8"]
+
+[ext_resource type="PackedScene" uid="uid://cmf6m2ikdwq80" path="res://Models/Male_Teacher_Low_Poly.glb" id="1_mg5ne"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vyvgh"]
+
+[node name="HumanNpc" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99070716, 0)
+shape = SubResource("CapsuleShape3D_vyvgh")
+
+[node name="Male_Teacher_Low_Poly" parent="." instance=ExtResource("1_mg5ne")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Male_Teacher_Low_Poly"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0kxoayxkvhfa"]
+[gd_scene load_steps=25 format=3 uid="uid://c0kxoayxkvhfa"]
 
 [ext_resource type="Script" uid="uid://y5fhusu1235e" path="res://Scripts/Level.cs" id="1_bvt00"]
 [ext_resource type="PackedScene" uid="uid://war5oa36xae" path="res://Models/auzrea_parking_final/scene.gltf" id="1_tumq0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bv5n1xxjl63xi" path="res://Scripts/Spawner.cs" id="7_754fn"]
 [ext_resource type="PackedScene" uid="uid://de5sif3dt5gin" path="res://Scenes/debug_hud.tscn" id="8_754fn"]
 [ext_resource type="PackedScene" uid="uid://bofllgs5qvswc" path="res://Scenes/simple_npc.tscn" id="8_bvt00"]
+[ext_resource type="Script" uid="uid://dkdvm05ydhe81" path="res://Scripts/OffroadArea.cs" id="10_oqgf2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k5f4k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -45,6 +46,15 @@ size = Vector3(1.1702, 0.787964, 1.96539)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_754fn"]
 size = Vector3(48.9465, 0.768433, 2.09839)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvt00"]
+size = Vector3(3.4650574, 4.118103, 25.758911)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oqgf2"]
+size = Vector3(28.069824, 6.3598022, 2.9482117)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxfql"]
+size = Vector3(6.182617, 6.919922, 42.077026)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_bvt00")
@@ -182,6 +192,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1856, 0, -15.2243)
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("7_754fn")
 NpcVehicleScene = ExtResource("8_bvt00")
+
+[node name="OffroadArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7609415, 0, 0)
+script = ExtResource("10_oqgf2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OffroadArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.084732056, 1.5590515, -10.3580475)
+shape = SubResource("BoxShape3D_bvt00")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="OffroadArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.677713, 3.1246471, -21.976738)
+shape = SubResource("BoxShape3D_oqgf2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="OffroadArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.053284, 2.959961, -2.3934593)
+shape = SubResource("BoxShape3D_qxfql")
 
 [editable path="Sketchfab_Scene"]
 [editable path="Player"]
