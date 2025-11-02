@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bjxcup2eji7tr"]
 
-[ext_resource type="Script" uid="uid://drmyfm35vmihm" path="res://Scenes/Hud.cs" id="1_e0onf"]
+[ext_resource type="Script" uid="uid://drmyfm35vmihm" path="res://Scripts/Hud.cs" id="1_e0onf"]
 [ext_resource type="Script" uid="uid://demtmgbfpb82e" path="res://Scenes/LevelScoreHudElement.cs" id="2_6fbih"]
 [ext_resource type="FontFile" uid="uid://38ocn43htkr" path="res://UI/Fonts/BasicHandwriting.ttf" id="3_bjfho"]
 [ext_resource type="FontFile" uid="uid://cnqjcxtutar5f" path="res://UI/Fonts/ThreeDimRightwardsRound.ttf" id="3_t1xeu"]

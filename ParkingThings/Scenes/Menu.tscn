@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://1q636o16n2vt"]
 
-[ext_resource type="Script" uid="uid://hsaxsgfbtg23" path="res://Scenes/Menu.cs" id="1_6pedr"]
+[ext_resource type="Script" uid="uid://hsaxsgfbtg23" path="res://Scripts/Menu.cs" id="1_6pedr"]
 [ext_resource type="FontFile" uid="uid://c83o7i54w03w5" path="res://UI/Fonts/Duo-Dunkel.ttf" id="2_syfuq"]
 
 [node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("QuitButton", "PlayButton")]
