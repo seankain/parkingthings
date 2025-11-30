@@ -12,6 +12,7 @@ public partial class Level : Node3D
 	public LevelData levelData;
 
 	public GameState State;
+
 	private GameState prevState;
 
 	// How long to stay at level over
@@ -192,6 +193,14 @@ public partial class Level : Node3D
 		//     spawner.SpawnNpcVehicle(npcNode.GlobalPosition + 3 * Vector3.Up, new Vector3(0, 90, 0));
 		// }
 	}
+
+	private void RandomEvent()
+    {
+		var parkingNodes = GetTree().GetNodesInGroup("ParkingSpace");
+		var parkingSpace = parkingNodes[Random.Shared.Next(0,parkingNodes.Count)];
+		var location = (Node3D)parkingSpace.GetNode("NpcSpawnPoint");
+        spawner.SpawnNpcHuman(location.GlobalPosition,location.GlobalRotationDegrees);
+    }
 
 	private bool GetPlayerInSpace()
 	{
