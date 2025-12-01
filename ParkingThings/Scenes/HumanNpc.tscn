@@ -258,8 +258,9 @@ _data = {
 &"Take 001": SubResource("Animation_ovav0")
 }
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("navigationAgent")]
 script = ExtResource("1_1uygd")
+navigationAgent = NodePath("NavigationAgent3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99070716, 0)

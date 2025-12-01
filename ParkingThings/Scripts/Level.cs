@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class Level : Node3D
 {
+	[Export]
+	public Timer RandomEventTimer;
 	public uint LevelNumber = 1;
 	public int Score = 0;
 
@@ -17,7 +19,8 @@ public partial class Level : Node3D
 
 	// How long to stay at level over
 	public uint LevelOverTimeSeconds = 5;
-	// This counts down when in level over state
+	// This counts down when in level over state TODO: probably replace with Timer I did this before
+	// I knew about Timer
 	public double LevelOverRemainingSeconds = 0;
 
 	public double LevelRemainingSeconds = LevelDefaults.LevelDefaultTimeSeconds;
@@ -38,11 +41,15 @@ public partial class Level : Node3D
 		player = root.GetNode<Player>("/root/Main/Level/Player");
 		player.PlayerRespawned += (o, e) => { ResetLevel(); };
 		player.PlayerHitObstacle += (o, e) => { HandlePlayerObstacleHit(e); };
+		RandomEventTimer.WaitTime = LevelDefaults.RandomEventSeconds;
+		RandomEventTimer.Timeout += HandleRandomEvent;
+		RandomEventTimer.Start();
+		
 		GenerateObstacles();
 		//ShowMenu();
 	}
 
-	public override void _Process(double delta)
+    public override void _Process(double delta)
 	{
 		switch (State)
 		{
@@ -136,6 +143,7 @@ public partial class Level : Node3D
 		var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
 		camControl.SnapToDefault();
 		GenerateObstacles();
+		
 		hud.HideLevelScore();
 	}
 
@@ -194,9 +202,10 @@ public partial class Level : Node3D
 		// }
 	}
 
-	private void RandomEvent()
+	private void HandleRandomEvent()
     {
-		var parkingNodes = GetTree().GetNodesInGroup("ParkingSpace");
+		GD.Print("random event occurs now");
+       	var parkingNodes = GetTree().GetNodesInGroup("ParkingSpace");
 		var parkingSpace = parkingNodes[Random.Shared.Next(0,parkingNodes.Count)];
 		var location = (Node3D)parkingSpace.GetNode("NpcSpawnPoint");
         spawner.SpawnNpcHuman(location.GlobalPosition,location.GlobalRotationDegrees);

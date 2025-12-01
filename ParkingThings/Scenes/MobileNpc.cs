@@ -14,6 +14,20 @@ public partial class MobileNpc : CharacterBody3D
 	[Export]
 	public NavigationAgent3D navigationAgent;
 
+    public override void _Ready()
+    {
+        var root = GetTree().Root;
+		var entrance = root.GetNode<Node3D>("/root/Main/Level/BuildingEntrance");
+		navigationAgent.MaxSpeed = Speed;
+		navigationAgent.TargetReached += HandleTargetReached;
+		navigationAgent.TargetPosition = entrance.GlobalPosition;
+    }
+
+    private void HandleTargetReached()
+    {
+        this.Free();
+    }
+
     public override void _Process(double delta)
     {
         

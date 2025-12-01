@@ -74,4 +74,6 @@ public class LevelDefaults
     public static uint LevelTimeDecrement = 5;
     public static uint StartingVehicleCount = 5;
     public static uint VehicleIncrement = 2;
+
+    public static uint RandomEventSeconds = 10;
 }
