@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 // TODO move all of this up to parking space which already has a reference to the area3d and can 
 // listen to these events this is a needless subcomponent
 public enum ParkingSpaceTriggerType
@@ -20,6 +21,9 @@ public partial class ParkingSpaceArea : Area3D
 {
     public event ParkingSpaceEnteredEventHandler ParkingSpaceEntered;
     public event ParkingSpaceExitedEventHandler ParkingSpaceExited;
+
+    public bool SpaceHasNpcVehicle {get{return currentOccupyingBodies.Any(o=>o.IsInGroup("NpcVehicle"));}}
+    private readonly HashSet<Node3D> currentOccupyingBodies =  [];
 
     protected virtual void OnParkingSpaceEntered(ParkingSpaceTransitEventArgs e)
     {
@@ -41,7 +45,7 @@ public partial class ParkingSpaceArea : Area3D
     {
         this.BodyEntered += (o) =>
         {
-
+            currentOccupyingBodies.Add(o);
             if (o.IsInGroup("Player"))
             {
                 //GD.Print($"{o.Name} entered parking space");
@@ -51,7 +55,7 @@ public partial class ParkingSpaceArea : Area3D
 
         this.BodyExited += (o) =>
         {
-
+            currentOccupyingBodies.Remove(o);
             if (o.IsInGroup("Player"))
             {
                 // GD.Print($"{o.Name} exited parking space");

@@ -216,9 +216,6 @@ shape = SubResource("BoxShape3D_oqgf2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.053284, 2.959961, -2.3934593)
 shape = SubResource("BoxShape3D_qxfql")
 
-[node name="HumanNpc" parent="." instance=ExtResource("11_qxfql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2202766, 0.2618264, -5.2216706)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_qxfql")
 

@@ -9,7 +9,8 @@ public enum NpcNavigationState
 
 public partial class MobileNpc : CharacterBody3D
 {
-	public const float Speed = 5.0f;
+	[Export]
+	public float Speed = 1.0f;
 	public const float JumpVelocity = 4.5f;
 	[Export]
 	public NavigationAgent3D navigationAgent;
@@ -25,7 +26,7 @@ public partial class MobileNpc : CharacterBody3D
 
     private void HandleTargetReached()
     {
-        this.Free();
+		GD.Print("NPC reached destination");
     }
 
     public override void _Process(double delta)
@@ -42,7 +43,10 @@ public partial class MobileNpc : CharacterBody3D
 		{
 			velocity += GetGravity() * (float)delta;
 		}
-		
+		var destination = navigationAgent.GetNextPathPosition();
+		var localDestination = destination - this.GlobalPosition;
+		var direction = localDestination.Normalized();
+		velocity = direction * Speed;
 		// // Handle Jump.
 		// if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 		// {
@@ -64,7 +68,7 @@ public partial class MobileNpc : CharacterBody3D
 		// 	velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
 		// }
 
-		// Velocity = velocity;
+		 Velocity = velocity;
 		MoveAndSlide();
 	}
 }

@@ -41,6 +41,7 @@ public partial class ParkingSpace : Node3D
     //TODO delete
     private DebugHud debugHud;
 
+    public bool SpaceHasNpcVehicle{get{return area.SpaceHasNpcVehicle;}}
 
     public override void _Ready()
     {

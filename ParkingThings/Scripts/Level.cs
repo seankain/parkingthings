@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class Level : Node3D
 {
@@ -184,11 +185,8 @@ public partial class Level : Node3D
 		while (spaceIdxs.Count < carsToGenerate)
 		{
 			var val = Random.Shared.Next(0, nodes.Count);
-			if (!spaceIdxs.Contains(val))
-			{
-				spaceIdxs.Add(val);
-			}
-		}
+            spaceIdxs.Add(val);
+        }
 		foreach (var idx in spaceIdxs)
 		{
 			var npcNode = (Node3D)nodes[idx];
@@ -205,12 +203,11 @@ public partial class Level : Node3D
 	private void HandleRandomEvent()
     {
 		GD.Print("random event occurs now");
-       	var parkingNodes = GetTree().GetNodesInGroup("ParkingSpace");
+       	var parkingNodes = GetTree().GetNodesInGroup("ParkingSpace").Cast<ParkingSpace>().Where(p=>p.SpaceHasNpcVehicle).ToList();
 		var parkingSpace = parkingNodes[Random.Shared.Next(0,parkingNodes.Count)];
 		var location = (Node3D)parkingSpace.GetNode("NpcSpawnPoint");
         spawner.SpawnNpcHuman(location.GlobalPosition,location.GlobalRotationDegrees);
     }
-
 	private bool GetPlayerInSpace()
 	{
 		var nodes = GetTree().GetNodesInGroup("ParkingSpace");
