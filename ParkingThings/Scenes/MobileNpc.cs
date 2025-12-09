@@ -17,6 +17,10 @@ public partial class MobileNpc : CharacterBody3D
 	[Export]
 	public AnimationPlayer animationPlayer;
 
+	[Export]
+	public PhysicalBoneSimulator3D boneSimulator;
+
+
     public override void _Ready()
     {
         var root = GetTree().Root;
@@ -74,5 +78,26 @@ public partial class MobileNpc : CharacterBody3D
 
 		 Velocity = velocity;
 		MoveAndSlide();
+		for(var i = 0; i < this.GetSlideCollisionCount(); i++)
+        {
+            var col = this.GetSlideCollision(i);
+            if (((Node)col.GetCollider()).IsInGroup("Player"))
+            {
+                Ragdoll();
+            }
+        }
+
 	}
+
+	private void Ragdoll()
+    {
+		navigationAgent.SetProcess(false);
+		this.SetProcess(false);
+		this.SetPhysicsProcess(false);
+		navigationAgent.SetPhysicsProcess(false);
+        this.animationPlayer.Active = false;
+		this.animationPlayer.SetProcess(false);
+		boneSimulator.Active = true;
+		
+    }
 }
