@@ -220,7 +220,7 @@ shape = SubResource("BoxShape3D_qxfql")
 navigation_mesh = SubResource("NavigationMesh_qxfql")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9094505, -0.5015704, 0.9707947)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.909, -1, 0.971)
 visible = false
 use_collision = true
 size = Vector3(24.165535, 1, 40.009743)

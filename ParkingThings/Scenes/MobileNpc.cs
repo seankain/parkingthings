@@ -14,6 +14,8 @@ public partial class MobileNpc : CharacterBody3D
 	public const float JumpVelocity = 4.5f;
 	[Export]
 	public NavigationAgent3D navigationAgent;
+	[Export]
+	public AnimationPlayer animationPlayer;
 
     public override void _Ready()
     {
@@ -22,6 +24,7 @@ public partial class MobileNpc : CharacterBody3D
 		navigationAgent.MaxSpeed = Speed;
 		navigationAgent.TargetReached += HandleTargetReached;
 		navigationAgent.TargetPosition = entrance.GlobalPosition;
+		animationPlayer.Play("WalkPhone");
     }
 
     private void HandleTargetReached()
@@ -47,6 +50,7 @@ public partial class MobileNpc : CharacterBody3D
 		var localDestination = destination - this.GlobalPosition;
 		var direction = localDestination.Normalized();
 		velocity = direction * Speed;
+		this.LookAt(destination);
 		// // Handle Jump.
 		// if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 		// {
