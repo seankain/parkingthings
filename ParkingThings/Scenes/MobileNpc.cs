@@ -20,13 +20,18 @@ public partial class MobileNpc : CharacterBody3D
 	[Export]
 	public PhysicalBoneSimulator3D boneSimulator;
 
+	[Export]
+	public Node3D entrance;
 
     public override void _Ready()
     {
         var root = GetTree().Root;
-		var entrance = root.GetNode<Node3D>("/root/Main/Level/BuildingEntrance");
 		navigationAgent.MaxSpeed = Speed;
 		navigationAgent.TargetReached += HandleTargetReached;
+		if(entrance == null)
+        {
+			entrance = root.GetNode<Node3D>("/root/Main/Level/BuildingEntrance");
+        }
 		navigationAgent.TargetPosition = entrance.GlobalPosition;
 		animationPlayer.Play("WalkPhone");
     }
@@ -89,7 +94,7 @@ public partial class MobileNpc : CharacterBody3D
 
 	}
 
-	private void Ragdoll()
+	public void Ragdoll()
     {
 		navigationAgent.SetProcess(false);
 		this.SetProcess(false);
@@ -98,6 +103,7 @@ public partial class MobileNpc : CharacterBody3D
         this.animationPlayer.Active = false;
 		this.animationPlayer.SetProcess(false);
 		boneSimulator.Active = true;
+		boneSimulator.PhysicalBonesStartSimulation();
 		
     }
 }

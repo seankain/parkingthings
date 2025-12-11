@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuosxlr4xavo3"]
+
+[ext_resource type="PackedScene" uid="uid://clll8hhfeikj8" path="res://Scenes/HumanNpc.tscn" id="1_l6pbg"]
+[ext_resource type="Script" uid="uid://dskq60f4tqiof" path="res://Scripts/RagdollTest.cs" id="1_qapdg"]
+[ext_resource type="PackedScene" uid="uid://xw30jiprklfj" path="res://Scenes/NpcRagdoll.tscn" id="3_sdld4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qapdg"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_sdld4"]
+sky_material = SubResource("ProceduralSkyMaterial_qapdg")
+
+[sub_resource type="Environment" id="Environment_cw4ci"]
+background_mode = 2
+sky = SubResource("Sky_sdld4")
+tonemap_mode = 2
+
+[node name="RagdollTest" type="Node3D" node_paths=PackedStringArray("Npc")]
+script = ExtResource("1_qapdg")
+Npc = NodePath("CharacterBody3D")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cw4ci")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053038716, -0.50821024, 0.48016405)
+use_collision = true
+size = Vector3(33.643158, 1, 26.880127)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3044388, 0.9453789)
+
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("entrance") instance=ExtResource("1_l6pbg")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.45823038, 0, -1.6428437)
+entrance = NodePath("../Node3D")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="NpcRagdoll" parent="." instance=ExtResource("3_sdld4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5312543, 0, -1.642797)
