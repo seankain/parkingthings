@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class NpcCar : VehicleBody3D
+public partial class NpcCar : Godot.VehicleBody3D
 {
     [Export]
     public float MAX_STEER = 0.9f;

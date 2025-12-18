@@ -66,8 +66,10 @@ public partial class Player : VehicleBody3D
             // }
             if (eventKey.Pressed && eventKey.Keycode == Key.R)
             {
-                //Respawn();
-                respawnPressed = true;
+                                this.PlayerRespawned?.Invoke(this, new PlayerRespawnArgs());
+                Respawn();
+
+                //respawnPressed = true;
             }
         }
     }

@@ -130,6 +130,7 @@ public partial class Level : Node3D
 	private void ResetLevel()
 	{
 		hud.ShowMessage("GO!");
+		levelData = new();
 		hud.ClearScore();
 		State = GameState.LevelActive;
 		levelData = new LevelData();
@@ -160,7 +161,7 @@ public partial class Level : Node3D
 		GD.Print($"Level Time: {LevelRemainingSeconds}");
 		if (LevelRemainingSeconds <= 0)
 		{
-			GD.Print($"level remaining seconds less than zero, setting to default of {LevelRemainingSeconds}");
+			GD.Print($"level remaining seconds less than zero, setting to default of {LevelDefaults.LevelDefaultMinTimeSeconds}");
 			// Force later levels to have minimum time to complete
 			LevelRemainingSeconds = LevelDefaults.LevelDefaultMinTimeSeconds;
 		}
@@ -174,6 +175,7 @@ public partial class Level : Node3D
 
 	private void GenerateObstacles()
 	{
+		GD.Print("Generate obstacles");
 		spawner.ClearVehicles();
 		var nodes = GetTree().GetNodesInGroup("ParkingSpace");
 		var carsToGenerate = LevelNumber * LevelDefaults.VehicleIncrement;
