@@ -18,6 +18,9 @@ public partial class MobileNpc : CharacterBody3D
 	public AnimationPlayer animationPlayer;
 
 	[Export]
+	public CollisionShape3D agentCollisionShape;
+
+	[Export]
 	public PhysicalBoneSimulator3D boneSimulator;
 
 	[Export]
@@ -59,7 +62,9 @@ public partial class MobileNpc : CharacterBody3D
 		var localDestination = destination - this.GlobalPosition;
 		var direction = localDestination.Normalized();
 		velocity = direction * Speed;
+		if(!this.GlobalPosition.IsEqualApprox(destination)){
 		this.LookAt(destination);
+		}
 		// // Handle Jump.
 		// if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 		// {
@@ -104,6 +109,21 @@ public partial class MobileNpc : CharacterBody3D
 		this.animationPlayer.SetProcess(false);
 		boneSimulator.Active = true;
 		boneSimulator.PhysicalBonesStartSimulation();
-		
+		agentCollisionShape.Disabled = true;
+
     }
+
+	public void Unragdoll()
+	{	
+		boneSimulator.PhysicalBonesStopSimulation();
+		boneSimulator.Active = false;
+		agentCollisionShape.Disabled = false;
+		this.SetProcess(true);
+		this.SetPhysicsProcess(true);
+		navigationAgent.SetPhysicsProcess(true);
+        navigationAgent.SetProcess(true);
+		this.animationPlayer.Active = true;
+		this.animationPlayer.SetProcess(true);
+
+	}
 }

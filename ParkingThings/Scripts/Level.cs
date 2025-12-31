@@ -129,17 +129,16 @@ public partial class Level : Node3D
 
 	private void ResetLevel()
 	{
-		hud.ShowMessage("GO!");
-		levelData = new();
-		hud.ClearScore();
-		State = GameState.LevelActive;
-		levelData = new LevelData();
 		LevelRemainingSeconds = ((double)LevelDefaults.LevelDefaultTimeSeconds) - ((double)(LevelNumber * LevelDefaults.LevelTimeDecrement));
 		if (LevelRemainingSeconds <= LevelDefaults.LevelDefaultMinTimeSeconds)
 		{
 			// Force later levels to have minimum time to complete
 			LevelRemainingSeconds = LevelDefaults.LevelDefaultMinTimeSeconds;
 		}
+		hud.ShowMessage("GO!");
+		levelData = new();
+		hud.ClearScore();
+		State = GameState.LevelActive;
 		player.Respawn();
 		player.ResumeInput();
 		var camControl = GetTree().Root.GetNode<CameraControl>("/root/Main/Level/Player/SpringArm3D");
