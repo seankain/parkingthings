@@ -41,11 +41,11 @@ public partial class Player : VehicleBody3D
     private void HandleCollision(Node body)
     {
         var args = new PlayerHitObstacleArgs();
-        if (body.IsInGroup("NpcVehicle"))
+        if(body is IObstacleType obstacle)
         {
-            GD.Print("player hit a car");
-            args.ObstacleType = ObstacleType.Vehicle;
-            PlayerHitObstacle?.Invoke(this, args);
+            GD.Print("vehicle collision event");
+            args.ObstacleType = obstacle.ObstacleType;
+            PlayerHitObstacle?.Invoke(this,args);
         }
     }
 
@@ -66,7 +66,7 @@ public partial class Player : VehicleBody3D
             // }
             if (eventKey.Pressed && eventKey.Keycode == Key.R)
             {
-                                this.PlayerRespawned?.Invoke(this, new PlayerRespawnArgs());
+                this.PlayerRespawned?.Invoke(this, new PlayerRespawnArgs());
                 Respawn();
 
                 //respawnPressed = true;

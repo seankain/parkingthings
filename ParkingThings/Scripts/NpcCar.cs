@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class NpcCar : Godot.VehicleBody3D
+public partial class NpcCar : Godot.VehicleBody3D, IObstacleType
 {
     [Export]
     public float MAX_STEER = 0.9f;
@@ -10,6 +10,9 @@ public partial class NpcCar : Godot.VehicleBody3D
     public float SteeringSpeed = 10.0f;
     [Export]
     public float ENGINE_POWER = 300;
+
+    public ObstacleType ObstacleType => ObstacleType.Vehicle;
+
 
     public override void _PhysicsProcess(double delta)
     {

@@ -22,6 +22,7 @@ public partial class Spawner : Node
         AddChild(npc);
         ((CharacterBody3D)npc).GlobalPosition = location;
         ((CharacterBody3D)npc).GlobalRotationDegrees = rotation;
+        ((MobileNpc)npc).OnReachedExit += (o,e)=>{ClearNpc((MobileNpc)npc);};
         npcHumanNodes.Add(npc);
     }
 
@@ -63,5 +64,19 @@ public partial class Spawner : Node
             npcVehicleNodes[0].Free();
             npcVehicleNodes.RemoveAt(0);
         }
+    }
+
+    public void ClearNpcs()
+    {
+        while(npcHumanNodes.Count > 0)
+        {
+            npcHumanNodes[0].Free();
+            npcHumanNodes.RemoveAt(0);
+        }
+    }
+
+    private void ClearNpc(MobileNpc npc)
+    {
+        
     }
 }

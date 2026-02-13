@@ -201,6 +201,11 @@ public partial class Level : Node3D
 		// }
 	}
 
+	private void ResetNpcs()
+	{
+		spawner.ClearNpcs();
+	}
+
 	private void HandleRandomEvent()
     {
 		GD.Print("random event occurs now");

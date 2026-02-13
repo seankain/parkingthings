@@ -7,8 +7,9 @@ public enum NpcNavigationState
 	Evading
 }
 
-public partial class MobileNpc : CharacterBody3D
+public partial class MobileNpc : CharacterBody3D, IObstacleType
 {
+	public event EventHandler OnReachedExit;
 	[Export]
 	public float Speed = 1.0f;
 	public const float JumpVelocity = 4.5f;
@@ -26,6 +27,9 @@ public partial class MobileNpc : CharacterBody3D
 	[Export]
 	public Node3D entrance;
 
+    public ObstacleType ObstacleType => ObstacleType.Person;
+
+
     public override void _Ready()
     {
         var root = GetTree().Root;
@@ -41,7 +45,7 @@ public partial class MobileNpc : CharacterBody3D
 
     private void HandleTargetReached()
     {
-		GD.Print("NPC reached destination");
+		OnReachedExit?.Invoke(this,new());
     }
 
     public override void _Process(double delta)

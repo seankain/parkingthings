@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwtqheaxtihay"]
+[gd_scene format=3 uid="uid://cwtqheaxtihay"]
 
 [ext_resource type="Script" uid="uid://btesbceacmeyj" path="res://Scripts/Player.cs" id="1_wy12b"]
 [ext_resource type="Script" uid="uid://cgv7bov4imkf1" path="res://Scripts/CameraControl.cs" id="2_j0y0t"]
@@ -15,7 +15,7 @@ size = Vector3(1.96594, 1.18079, 2.72839)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wy12b"]
 
-[node name="SimplePlayer" type="VehicleBody3D"]
+[node name="SimplePlayer" type="VehicleBody3D" unique_id=1853765069]
 mass = 500.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
@@ -24,23 +24,23 @@ max_contacts_reported = 1
 script = ExtResource("1_wy12b")
 ENGINE_POWER = 1.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=609045959]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.635574, -0.0277405)
 shape = SubResource("BoxShape3D_cualu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1955996749]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 4.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_wy12b")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1462919284]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.467, -0.027)
 shape = SubResource("BoxShape3D_wy12b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D2" unique_id=1711187361]
 transform = Transform3D(1.8, 0, 0, 0, 1, 0, 0, 0, 2.8, 0, 0, 0)
 mesh = SubResource("BoxMesh_j0y0t")
 
-[node name="RF" type="VehicleWheel3D" parent="."]
+[node name="RF" type="VehicleWheel3D" parent="." unique_id=631949208]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.35079)
 use_as_traction = true
 use_as_steering = true
@@ -50,11 +50,11 @@ suspension_travel = 0.1
 suspension_stiffness = 50.0
 damping_compression = 0.5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RF"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RF" unique_id=731778269]
 transform = Transform3D(-4.37114e-08, -0.2, 0, 1, -8.74228e-09, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_wy12b")
 
-[node name="LF" type="VehicleWheel3D" parent="."]
+[node name="LF" type="VehicleWheel3D" parent="." unique_id=198309748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.35079)
 use_as_traction = true
 use_as_steering = true
@@ -64,11 +64,11 @@ suspension_travel = 0.1
 suspension_stiffness = 50.0
 damping_compression = 0.5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LF"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LF" unique_id=1010982207]
 transform = Transform3D(-4.37114e-08, -0.2, 0, 1, -8.74228e-09, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_wy12b")
 
-[node name="RR" type="VehicleWheel3D" parent="."]
+[node name="RR" type="VehicleWheel3D" parent="." unique_id=1808408641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.56004)
 use_as_traction = true
 wheel_roll_influence = 1.0
@@ -77,11 +77,11 @@ suspension_travel = 0.1
 suspension_stiffness = 50.0
 damping_compression = 0.5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RR"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RR" unique_id=927132441]
 transform = Transform3D(-4.37114e-08, -0.2, 0, 1, -8.74228e-09, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_wy12b")
 
-[node name="LR" type="VehicleWheel3D" parent="."]
+[node name="LR" type="VehicleWheel3D" parent="." unique_id=1313044872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.56004)
 use_as_traction = true
 wheel_roll_influence = 1.0
@@ -90,18 +90,19 @@ suspension_travel = 0.1
 suspension_stiffness = 50.0
 damping_compression = 0.5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LR"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LR" unique_id=267357019]
 transform = Transform3D(-4.37114e-08, -0.2, 0, 1, -8.74228e-09, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_wy12b")
 
-[node name="CameraPivot" type="Node3D" parent="."]
+[node name="CameraPivot" type="Node3D" parent="." unique_id=331979764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1159634688]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.109, 1.14896)
 spring_length = 10.0
 script = ExtResource("2_j0y0t")
+smoothingSpeed = 0.1
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=417094024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.39989)
 current = true

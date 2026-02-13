@@ -19,6 +19,9 @@ public partial class CameraControl : Node3D
     [Export]
     private float DurationToSnap = 1.0f;
 
+    [Export]
+    private float smoothingSpeed = 0.01f;
+
     private double freelookIdleElapsed = 0f;
 
     private CameraState currentState = CameraState.Rear;
@@ -40,10 +43,13 @@ public partial class CameraControl : Node3D
             freelookIdleElapsed = 0f;
             var mouseMotionEvent = (InputEventMouseMotion)@event;
             var rot = this.Rotation;
-            rot.X -= mouseMotionEvent.Relative.Y * MouseSensitivity;
+            //rot.X -= mouseMotionEvent.Relative.Y * MouseSensitivity;
+            rot.X -= mouseMotionEvent.Relative.Y;
             rot.X = Mathf.Clamp(this.Rotation.X, -TiltMax, TiltMax);
-            rot.Y += -mouseMotionEvent.Relative.X * MouseSensitivity;
-            this.Rotation = rot;
+            //rot.Y += -mouseMotionEvent.Relative.X * MouseSensitivity;
+            rot.Y += -mouseMotionEvent.Relative.X;
+            //this.Rotation = rot;
+            this.Rotation = this.Rotation.Lerp(rot,smoothingSpeed);
         }
     }
 
